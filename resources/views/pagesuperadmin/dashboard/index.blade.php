@@ -2,174 +2,65 @@
 
 @section('style')
     <style>
-        /* ══════════ DASHBOARD STATS CARDS ══════════ */
-        .stat-card {
-            border: 1px solid hsl(var(--border)) !important;
-            border-radius: var(--radius) !important;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            background: hsl(var(--card)) !important;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-        }
-
-        .stat-card .card-body {
-            padding: 1.5rem !important;
-        }
-
-        .stat-card .stat-icon {
-            width: 48px;
-            height: 48px;
+        /* ── Responsive Stat Cards ── */
+        .stat-icon-box {
+            width: 44px;
+            height: 44px;
             border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
             background: hsl(var(--muted));
-            color: hsl(var(--foreground));
         }
 
-        .stat-card .stat-label {
+        .stat-label {
             font-size: 0.75rem;
             font-weight: 600;
-            text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: hsl(var(--muted-foreground));
-            margin-bottom: 0.25rem;
         }
 
-        .stat-card .stat-value {
-            font-size: 1.875rem;
-            font-weight: 700;
+        .stat-value {
+            font-size: 1.75rem;
             line-height: 1.2;
             letter-spacing: -0.02em;
-            color: hsl(var(--foreground));
         }
 
-        .stat-card .stat-sub {
+        .stat-sub {
             font-size: 0.813rem;
-            color: hsl(var(--muted-foreground));
-            margin-top: 0.25rem;
-            font-weight: 500;
         }
 
-        /* ══════════ CHART CARDS ══════════ */
-        .chart-card {
-            border-radius: var(--radius) !important;
-            border: 1px solid hsl(var(--border)) !important;
-            box-shadow: none !important;
-            transition: all 0.2s ease;
-            background: hsl(var(--card)) !important;
-        }
-
-        .chart-card:hover {
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-        }
-
-        .chart-card .card-header {
-            padding: 1rem 1.5rem !important;
-            border-bottom: 1px solid hsl(var(--border)) !important;
-            background: transparent !important;
-        }
-
-        .chart-card .chart-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: hsl(var(--foreground));
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .chart-card .chart-subtitle {
-            font-size: 0.813rem;
-            color: hsl(var(--muted-foreground));
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        /* ══════════ BADGES ══════════ */
-        .badge-paid {
-            background: rgba(34, 197, 94, 0.1);
-            color: #16a34a;
-            border: 1px solid rgba(34, 197, 94, 0.2);
-        }
-
-        .badge-pending {
-            background: rgba(245, 158, 11, 0.1);
-            color: #d97706;
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .badge-expired {
-            background: rgba(239, 68, 68, 0.1);
-            color: #dc2626;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .badge-status {
-            padding: 0.25rem 0.625rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        /* ══════════ PAGE HEADER ══════════ */
-        .dash-greeting {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: hsl(var(--foreground));
-            letter-spacing: -0.02em;
-        }
-
-        .dash-greeting span {
-            color: hsl(var(--muted-foreground));
-        }
-
-        .dash-date {
-            font-size: 0.875rem;
-            color: hsl(var(--muted-foreground));
-            font-weight: 500;
-        }
-
-        /* ══════════ RESPONSIVE ══════════ */
-        @media (max-width: 768px) {
-            .stat-card .card-body {
-                padding: 1rem !important;
+        /* ── Mobile: smaller stat cards ── */
+        @media (max-width: 575.98px) {
+            .stat-icon-box {
+                width: 36px;
+                height: 36px;
             }
 
-            .stat-card .stat-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.25rem;
+            .stat-icon-box i {
+                font-size: 1rem !important;
             }
 
-            .stat-card .stat-value {
+            .stat-value {
+                font-size: 1.35rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            .stat-sub {
+                font-size: 0.7rem;
+            }
+
+            .greeting-name {
+                font-size: 1.1rem !important;
+            }
+
+            .greeting-date {
+                font-size: 0.75rem !important;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .stat-value {
                 font-size: 1.5rem;
-            }
-
-            .dash-greeting {
-                font-size: 1.25rem;
-            }
-
-            .chart-card .card-header {
-                padding: 1rem !important;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .stat-card .card-body {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 0.75rem !important;
             }
         }
     </style>
@@ -185,7 +76,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h5 class="m-b-10">Dashboard</h5>
+                                <h5 class="mb-0">Dashboard</h5>
                             </div>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/dashboard-superadmin">Home</a></li>
@@ -197,66 +88,76 @@
             </div>
 
             {{-- ── Greeting ── --}}
-            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <div
+                class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between mb-4 gap-3">
                 <div>
-                    <div class="dash-greeting d-flex align-items-center gap-2">
-                        Halo, <span>{{ Auth::user()->name }}</span>
+                    <h1 class="h3 fw-700 mb-1 greeting-name" style="letter-spacing:-0.02em;">
+                        Halo, <span class="text-muted">{{ Auth::user()->name }}</span>
                         <i class="ti ti-award text-warning"></i>
-                    </div>
-                    <div class="dash-date">{{ now()->translatedFormat('l, d F Y') }} — Ringkasan performa platform secara
-                        real-time</div>
+                    </h1>
+                    <p class="text-muted mb-0 greeting-date" style="font-size:0.875rem;">
+                        {{ now()->translatedFormat('l, d F Y') }} — Ringkasan performa platform secara real-time
+                    </p>
                 </div>
-                <a href="{{ route('riwayat-topup.index') }}" class="btn btn-primary d-inline-flex align-items-center gap-2">
-                    <i class="ti ti-receipt"></i> Riwayat Topup
+                <a href="{{ route('riwayat-topup.index') }}" class="btn btn-primary w-100 w-sm-auto">
+                    <i class="ti ti-receipt me-1"></i> Riwayat Topup
                 </a>
             </div>
 
-            {{-- ── Stats Cards Row ── --}}
-            <div class="row g-3 mb-4">
-                <div class="col-6 col-lg-3">
-                    <div class="card stat-card">
-                        <div class="card-body d-flex align-items-center gap-3">
-                            <div class="stat-icon"><i class="ti ti-users"></i></div>
-                            <div>
-                                <div class="stat-label">Total Pelanggan</div>
-                                <div class="stat-value">{{ number_format($pelanggan) }}</div>
-                                <div class="stat-sub">Akun user aktif</div>
+            {{-- ── Stat Cards (responsive: 1 col mobile, 2 col tablet, 4 col desktop) ── --}}
+            <div class="row g-2 g-sm-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card p-3 p-lg-4 h-100">
+                        <div class="d-flex align-items-center gap-2 gap-sm-3">
+                            <div class="d-flex align-items-center justify-content-center flex-shrink-0 stat-icon-box">
+                                <i class="ti ti-users" style="font-size:1.25rem;"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-muted text-uppercase mb-0 stat-label">Total Pelanggan</p>
+                                <p class="fw-700 mb-0 stat-value">{{ number_format($pelanggan) }}</p>
+                                <p class="text-muted mb-0 stat-sub">Akun user aktif</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card stat-card">
-                        <div class="card-body d-flex align-items-center gap-3">
-                            <div class="stat-icon"><i class="ti ti-photo-ai"></i></div>
-                            <div>
-                                <div class="stat-label">Generasi AI</div>
-                                <div class="stat-value">{{ number_format($generations) }}</div>
-                                <div class="stat-sub">Total desain dihasilkan</div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card p-3 p-lg-4 h-100">
+                        <div class="d-flex align-items-center gap-2 gap-sm-3">
+                            <div class="d-flex align-items-center justify-content-center flex-shrink-0 stat-icon-box">
+                                <i class="ti ti-photo-ai" style="font-size:1.25rem;"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-muted text-uppercase mb-0 stat-label">Generasi AI</p>
+                                <p class="fw-700 mb-0 stat-value">{{ number_format($generations) }}</p>
+                                <p class="text-muted mb-0 stat-sub">Total desain dihasilkan</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card stat-card">
-                        <div class="card-body d-flex align-items-center gap-3">
-                            <div class="stat-icon"><i class="ti ti-cash"></i></div>
-                            <div>
-                                <div class="stat-label">Total Revenue</div>
-                                <div class="stat-value">Rp{{ number_format($totalRevenue / 1000, 1) }}k</div>
-                                <div class="stat-sub">{{ $totalTopupBerhasil }} transaksi berhasil</div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card p-3 p-lg-4 h-100">
+                        <div class="d-flex align-items-center gap-2 gap-sm-3">
+                            <div class="d-flex align-items-center justify-content-center flex-shrink-0 stat-icon-box">
+                                <i class="ti ti-cash" style="font-size:1.25rem;"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-muted text-uppercase mb-0 stat-label">Total Revenue</p>
+                                <p class="fw-700 mb-0 stat-value">Rp{{ number_format($totalRevenue / 1000, 1) }}k</p>
+                                <p class="text-muted mb-0 stat-sub">{{ $totalTopupBerhasil }} transaksi berhasil</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3">
-                    <div class="card stat-card">
-                        <div class="card-body d-flex align-items-center gap-3">
-                            <div class="stat-icon"><i class="ti ti-message-star"></i></div>
-                            <div>
-                                <div class="stat-label">Testimoni</div>
-                                <div class="stat-value">{{ number_format($testimonis) }}</div>
-                                <div class="stat-sub">Total ulasan pelanggan</div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card p-3 p-lg-4 h-100">
+                        <div class="d-flex align-items-center gap-2 gap-sm-3">
+                            <div class="d-flex align-items-center justify-content-center flex-shrink-0 stat-icon-box">
+                                <i class="ti ti-message-star" style="font-size:1.25rem;"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-muted text-uppercase mb-0 stat-label">Testimoni</p>
+                                <p class="fw-700 mb-0 stat-value">{{ number_format($testimonis) }}</p>
+                                <p class="text-muted mb-0 stat-sub">Total ulasan pelanggan</p>
                             </div>
                         </div>
                     </div>
@@ -265,66 +166,70 @@
 
             {{-- ── Charts Row ── --}}
             <div class="row g-3 mb-4">
-                {{-- Chart Revenue --}}
-                <div class="col-lg-8">
-                    <div class="card chart-card h-100">
-                        <div class="card-header d-flex align-items-center justify-content-between">
+                {{-- Revenue Chart (full width on mobile) --}}
+                <div class="col-12 col-lg-8">
+                    <div class="card h-100">
+                        <div
+                            class="card-header d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-2">
                             <div>
-                                <div class="chart-title">
-                                    <i class="ti ti-trending-up" style="font-size: 1.25rem;"></i> Revenue Bulanan
-                                </div>
-                                <div class="chart-subtitle">Pendapatan 12 bulan terakhir (transaksi berhasil)</div>
+                                <h5 class="mb-0 d-flex align-items-center gap-2">
+                                    <i class="ti ti-trending-up"></i> Revenue Bulanan
+                                </h5>
+                                <p class="text-muted mb-0 mt-1" style="font-size:0.813rem;">Pendapatan 12 bulan terakhir
+                                    (transaksi berhasil)</p>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="chartRevenue"></div>
+                            <div id="chartRevenue" class="w-100"></div>
                         </div>
                     </div>
                 </div>
-                {{-- Chart Pelanggan Baru --}}
-                <div class="col-lg-4">
-                    <div class="card chart-card h-100">
+                {{-- User Chart --}}
+                <div class="col-12 col-lg-4">
+                    <div class="card h-100">
                         <div class="card-header">
-                            <div class="chart-title">
-                                <i class="ti ti-user-plus text-primary fs-5"></i> Pelanggan Baru
-                            </div>
-                            <div class="chart-subtitle">Registrasi per bulan</div>
+                            <h5 class="mb-0 d-flex align-items-center gap-2">
+                                <i class="ti ti-user-plus"></i> Pelanggan Baru
+                            </h5>
+                            <p class="text-muted mb-0 mt-1" style="font-size:0.813rem;">Registrasi per bulan</p>
                         </div>
                         <div class="card-body">
-                            <div id="chartUsers"></div>
+                            <div id="chartUsers" class="w-100"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {{-- ── Second Row: AI Gen + Topup Table ── --}}
             <div class="row g-3 mb-4">
-                {{-- Chart Generasi AI --}}
-                <div class="col-lg-5">
-                    <div class="card chart-card h-100">
+                {{-- AI Generation Chart --}}
+                <div class="col-12 col-lg-5">
+                    <div class="card h-100">
                         <div class="card-header">
-                            <div class="chart-title">
-                                <i class="ti ti-sparkles text-success fs-5"></i> Generasi AI per Bulan
-                            </div>
-                            <div class="chart-subtitle">Jumlah desain AI yang dibuat</div>
+                            <h5 class="mb-0 d-flex align-items-center gap-2">
+                                <i class="ti ti-sparkles"></i> Generasi AI per Bulan
+                            </h5>
+                            <p class="text-muted mb-0 mt-1" style="font-size:0.813rem;">Jumlah desain AI yang dibuat</p>
                         </div>
                         <div class="card-body">
-                            <div id="chartGen"></div>
+                            <div id="chartGen" class="w-100"></div>
                         </div>
                     </div>
                 </div>
-                {{-- Tabel Topup Terbaru --}}
-                <div class="col-lg-7">
-                    <div class="card chart-card h-100">
-                        <div class="card-header d-flex align-items-center justify-content-between">
+                {{-- Recent Topups Table --}}
+                <div class="col-12 col-lg-7">
+                    <div class="card h-100">
+                        <div
+                            class="card-header d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-2">
                             <div>
-                                <div class="chart-title">
-                                    <i class="ti ti-receipt text-warning fs-5"></i> Topup Terbaru
-                                </div>
-                                <div class="chart-subtitle">10 transaksi terakhir yang berhasil</div>
+                                <h5 class="mb-0 d-flex align-items-center gap-2">
+                                    <i class="ti ti-receipt"></i> Topup Terbaru
+                                </h5>
+                                <p class="text-muted mb-0 mt-1" style="font-size:0.813rem;">10 transaksi terakhir yang
+                                    berhasil</p>
                             </div>
-                            <a href="{{ route('riwayat-topup.index') }}"
-                                class="btn btn-sm btn-secondary d-inline-flex align-items-center gap-1">
-                                Lihat Semua <i class="ti ti-chevron-right"></i>
+                            <a href="{{ route('riwayat-topup.index') }}" class="btn btn-sm btn-secondary">
+                                Lihat Semua <i class="ti ti-chevron-right ms-1"></i>
                             </a>
                         </div>
                         <div class="card-body p-0">
@@ -335,33 +240,38 @@
                                             <th>User</th>
                                             <th>Paket</th>
                                             <th>Jumlah</th>
-                                            <th>Tgl Bayar</th>
+                                            <th class="text-nowrap">Tgl Bayar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($latestTopup as $trx)
                                             <tr>
                                                 <td>
-                                                    <div class="fw-600 text-dark" style="font-size:0.82rem;">
-                                                        {{ $trx->user->name ?? '-' }}</div>
-                                                    <div class="text-muted" style="font-size:0.72rem;">
-                                                        {{ $trx->user->email ?? '' }}</div>
+                                                    <div class="fw-600" style="font-size:0.85rem;">
+                                                        {{ $trx->user->name ?? '-' }}
+                                                    </div>
+                                                    <div class="text-muted" style="font-size:0.75rem;">
+                                                        {{ $trx->user->email ?? '' }}
+                                                    </div>
                                                 </td>
-                                                <td style="font-size:0.82rem;">
-                                                    <span class="badge bg-light-primary text-primary font-semibold">
+                                                <td>
+                                                    <span class="badge bg-light-primary">
                                                         {{ $trx->package->name ?? '-' }}
                                                     </span>
                                                 </td>
-                                                <td style="font-size:0.82rem; font-weight:700; color:#16a34a;">
+                                                <td class="fw-700" style="color:#16a34a;font-size:0.85rem;">
                                                     Rp{{ number_format($trx->amount, 0, ',', '.') }}
                                                 </td>
-                                                <td style="font-size:0.78rem; color:#71717a;">
+                                                <td class="text-muted text-nowrap" style="font-size:0.8rem;">
                                                     {{ $trx->paid_at ? $trx->paid_at->format('d M Y') : '-' }}
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="4" class="text-center py-4 text-muted">Belum ada transaksi
+                                                <td colspan="4" class="text-center py-5 text-muted">
+                                                    <i class="ti ti-receipt-off"
+                                                        style="font-size:1.5rem;display:block;margin-bottom:0.5rem;"></i>
+                                                    Belum ada transaksi
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -379,29 +289,68 @@
 
 @section('script')
     <script>
-        // ══════════ Chart Revenue (Area) ══════════
+        // ═══════════════════════════════════════════════════════════════════
+        //  shadcn/ui-inspired ApexCharts — Responsive + Dark/Light ready
+        // ═══════════════════════════════════════════════════════════════════
+
+        // Helper: responsive chart height
+        function rspH(lg, sm) {
+            return window.innerWidth < 576 ? sm : (window.innerWidth < 992 ? Math.round((lg + sm) / 2) : lg);
+        }
+
+        const chartBase = {
+            fontFamily: 'Inter, system-ui, sans-serif',
+            toolbar: {
+                show: false
+            },
+            foreColor: 'hsl(240, 3.8%, 46.1%)',
+        };
+
+        const gridBase = {
+            borderColor: 'hsl(240, 5.9%, 90%)',
+            strokeDashArray: 4,
+        };
+
+        const labelStyle = {
+            style: {
+                fontSize: '11px',
+                colors: ['hsl(240, 3.8%, 46.1%)']
+            }
+        };
+
+        // Responsive x-axis labels: don't rotate on mobile
+        function xLabelStyle(rotate) {
+            return window.innerWidth < 576 ? {
+                style: {
+                    fontSize: '9px',
+                    colors: ['hsl(240, 3.8%, 46.1%)']
+                }
+            } : {
+                ...labelStyle,
+                rotate: rotate
+            };
+        }
+
+        // ── 1. Revenue (Area) ──
         var revenueLabels = @json($revenueLabels);
         var revenueData = @json($revenueData);
 
-        var optRevenue = {
+        new ApexCharts(document.querySelector('#chartRevenue'), {
             series: [{
                 name: 'Revenue (Rp)',
                 data: revenueData
             }],
             chart: {
+                ...chartBase,
                 type: 'area',
-                height: 290,
-                toolbar: {
-                    show: false
-                },
-                fontFamily: 'Inter, sans-serif',
+                height: rspH(290, 200)
             },
-            colors: ['#0a0a0a'],
+            colors: ['hsl(240, 5.9%, 10%)'],
             fill: {
                 type: 'gradient',
                 gradient: {
                     shadeIntensity: 1,
-                    opacityFrom: 0.2,
+                    opacityFrom: 0.15,
                     opacityTo: 0.02,
                     stops: [0, 100]
                 }
@@ -415,20 +364,12 @@
             },
             xaxis: {
                 categories: revenueLabels,
-                labels: {
-                    style: {
-                        fontSize: '11px',
-                        colors: '#737373'
-                    }
-                }
+                labels: xLabelStyle(false)
             },
             yaxis: {
                 labels: {
-                    formatter: v => 'Rp' + (v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v),
-                    style: {
-                        fontSize: '11px',
-                        colors: '#737373'
-                    }
+                    ...labelStyle,
+                    formatter: v => 'Rp' + (v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v)
                 }
             },
             tooltip: {
@@ -436,31 +377,48 @@
                     formatter: v => 'Rp ' + v.toLocaleString('id-ID')
                 }
             },
-            grid: {
-                borderColor: '#e5e5e5',
-                strokeDashArray: 4
-            },
-        };
-        new ApexCharts(document.querySelector('#chartRevenue'), optRevenue).render();
+            grid: gridBase,
+            responsive: [{
+                breakpoint: 576,
+                options: {
+                    chart: {
+                        height: 200
+                    },
+                    xaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '9px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            }
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '9px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            }
+                        }
+                    }
+                }
+            }]
+        }).render();
 
-        // ══════════ Chart Pelanggan Baru (Bar) ══════════
+        // ── 2. Pelanggan Baru (Bar) ──
         var userLabels = @json($userLabels);
         var userData = @json($userData);
 
-        var optUsers = {
+        new ApexCharts(document.querySelector('#chartUsers'), {
             series: [{
                 name: 'Pelanggan Baru',
                 data: userData
             }],
             chart: {
+                ...chartBase,
                 type: 'bar',
-                height: 270,
-                toolbar: {
-                    show: false
-                },
-                fontFamily: 'Inter, sans-serif'
+                height: rspH(270, 200)
             },
-            colors: ['#171717'],
+            colors: ['hsl(240, 5.9%, 10%)'],
             dataLabels: {
                 enabled: false
             },
@@ -472,47 +430,54 @@
             },
             xaxis: {
                 categories: userLabels,
-                labels: {
-                    style: {
-                        fontSize: '10px',
-                        colors: '#737373'
-                    },
-                    rotate: -45
-                }
+                labels: xLabelStyle(-45)
             },
             yaxis: {
-                labels: {
-                    style: {
-                        fontSize: '11px',
-                        colors: '#737373'
+                labels: labelStyle
+            },
+            grid: gridBase,
+            responsive: [{
+                breakpoint: 576,
+                options: {
+                    chart: {
+                        height: 200
+                    },
+                    xaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '8px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            },
+                            rotate: -45
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '9px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            }
+                        }
                     }
                 }
-            },
-            grid: {
-                borderColor: '#e5e5e5',
-                strokeDashArray: 4
-            },
-        };
-        new ApexCharts(document.querySelector('#chartUsers'), optUsers).render();
+            }]
+        }).render();
 
-        // ══════════ Chart Generasi AI (Bar) ══════════
+        // ── 3. Generasi AI (Bar) ──
         var genLabels = @json($genLabels);
         var genData = @json($genData);
 
-        var optGen = {
+        new ApexCharts(document.querySelector('#chartGen'), {
             series: [{
                 name: 'Generasi AI',
                 data: genData
             }],
             chart: {
+                ...chartBase,
                 type: 'bar',
-                height: 270,
-                toolbar: {
-                    show: false
-                },
-                fontFamily: 'Inter, sans-serif'
+                height: rspH(270, 200)
             },
-            colors: ['#262626'],
+            colors: ['hsl(240, 5.9%, 10%)'],
             dataLabels: {
                 enabled: false
             },
@@ -524,27 +489,37 @@
             },
             xaxis: {
                 categories: genLabels,
-                labels: {
-                    style: {
-                        fontSize: '10px',
-                        colors: '#737373'
-                    },
-                    rotate: -45
-                }
+                labels: xLabelStyle(-45)
             },
             yaxis: {
-                labels: {
-                    style: {
-                        fontSize: '11px',
-                        colors: '#737373'
+                labels: labelStyle
+            },
+            grid: gridBase,
+            responsive: [{
+                breakpoint: 576,
+                options: {
+                    chart: {
+                        height: 200
+                    },
+                    xaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '8px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            },
+                            rotate: -45
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            style: {
+                                fontSize: '9px',
+                                colors: ['hsl(240, 3.8%, 46.1%)']
+                            }
+                        }
                     }
                 }
-            },
-            grid: {
-                borderColor: '#e5e5e5',
-                strokeDashArray: 4
-            },
-        };
-        new ApexCharts(document.querySelector('#chartGen'), optGen).render();
+            }]
+        }).render();
     </script>
 @endsection

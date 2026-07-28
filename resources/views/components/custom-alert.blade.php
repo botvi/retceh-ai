@@ -56,17 +56,20 @@
         border: 1px solid #a7f3d0 !important;
         color: #059669 !important;
     }
+
     .custom-toast-error .custom-toast-icon-box,
     .custom-toast-danger .custom-toast-icon-box {
         background: #fff1f2 !important;
         border: 1px solid #fecdd3 !important;
         color: #e11d48 !important;
     }
+
     .custom-toast-warning .custom-toast-icon-box {
         background: #fffbeb !important;
         border: 1px solid #fde68a !important;
         color: #d97706 !important;
     }
+
     .custom-toast-info .custom-toast-icon-box {
         background: #eff6ff !important;
         border: 1px solid #bfdbfe !important;
@@ -78,6 +81,7 @@
         flex-grow: 1 !important;
         text-align: left !important;
     }
+
     .custom-toast-title {
         font-size: 11px !important;
         font-weight: 800 !important;
@@ -87,6 +91,7 @@
         margin: 0 0 2px 0 !important;
         line-height: 1.2 !important;
     }
+
     .custom-toast-message {
         font-size: 12px !important;
         font-weight: 500 !important;
@@ -107,6 +112,7 @@
         flex-shrink: 0 !important;
         transition: color 0.15s ease !important;
     }
+
     .custom-toast-close:hover {
         color: #27272a !important;
     }
@@ -160,16 +166,19 @@
         justify-content: center !important;
         font-size: 26px !important;
     }
+
     .custom-modal-warning .custom-modal-icon-circle {
         background: #fffbeb !important;
         border: 1px solid #fde68a !important;
         color: #d97706 !important;
     }
+
     .custom-modal-danger .custom-modal-icon-circle {
         background: #fff1f2 !important;
         border: 1px solid #fecdd3 !important;
         color: #e11d48 !important;
     }
+
     .custom-modal-info .custom-modal-icon-circle {
         background: #f4f6f2 !important;
         border: 1px solid #9fe870 !important;
@@ -216,6 +225,7 @@
         border: 1px solid #e4e4e7 !important;
         color: #3f3f46 !important;
     }
+
     .custom-modal-btn-cancel:hover {
         background: #f4f4f5 !important;
     }
@@ -224,6 +234,7 @@
         background: #e11d48 !important;
         color: #ffffff !important;
     }
+
     .custom-modal-btn-confirm-danger:hover {
         background: #be123c !important;
     }
@@ -232,22 +243,46 @@
         background: #9fe870 !important;
         color: #163300 !important;
     }
+
     .custom-modal-btn-confirm-primary:hover {
         background: #8cd85d !important;
     }
 
     /* Animations */
     @keyframes customToastSlideIn {
-        from { opacity: 0; transform: translateX(50px) scale(0.95); }
-        to { opacity: 1; transform: translateX(0) scale(1); }
+        from {
+            opacity: 0;
+            transform: translateX(50px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
     }
+
     @keyframes customToastSlideOut {
-        from { opacity: 1; transform: translateX(0) scale(1); }
-        to { opacity: 0; transform: translateX(50px) scale(0.95); }
+        from {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateX(50px) scale(0.95);
+        }
     }
+
     @keyframes customModalScaleUp {
-        from { opacity: 0; transform: scale(0.9) translateY(12px); }
-        to { opacity: 1; transform: scale(1) translateY(0); }
+        from {
+            opacity: 0;
+            transform: scale(0.9) translateY(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
     }
 </style>
 
@@ -263,48 +298,50 @@
         <h3 id="custom-modal-title" class="custom-modal-title">Konfirmasi</h3>
         <p id="custom-modal-text" class="custom-modal-text">Apakah Anda yakin ingin melanjutkan tindakan ini?</p>
         <div class="custom-modal-actions">
-            <button type="button" id="custom-modal-btn-cancel" class="custom-modal-btn custom-modal-btn-cancel">Batal</button>
-            <button type="button" id="custom-modal-btn-confirm" class="custom-modal-btn custom-modal-btn-confirm-primary">Ya, Lanjutkan</button>
+            <button type="button" id="custom-modal-btn-cancel"
+                class="custom-modal-btn custom-modal-btn-cancel">Batal</button>
+            <button type="button" id="custom-modal-btn-confirm"
+                class="custom-modal-btn custom-modal-btn-confirm-primary">Ya, Lanjutkan</button>
         </div>
     </div>
 </div>
 
 <script>
-(function() {
-    // ----------------------------------------------------
-    // Toast Dispatcher
-    // ----------------------------------------------------
-    window.showCustomToast = function(message, type = 'info', title = null) {
-        if (!message) return;
+    (function() {
+        // ----------------------------------------------------
+        // Toast Dispatcher
+        // ----------------------------------------------------
+        window.showCustomToast = function(message, type = 'info', title = null) {
+            if (!message) return;
 
-        let container = document.getElementById('custom-toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.id = 'custom-toast-container';
-            document.body.appendChild(container);
-        }
+            let container = document.getElementById('custom-toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'custom-toast-container';
+                document.body.appendChild(container);
+            }
 
-        const toast = document.createElement('div');
-        const toastType = (type || 'info').toLowerCase();
-        toast.className = `custom-toast-card custom-toast-${toastType}`;
-        
-        let iconClass = 'bi-info-circle-fill';
-        let defaultTitle = 'Informasi';
+            const toast = document.createElement('div');
+            const toastType = (type || 'info').toLowerCase();
+            toast.className = `custom-toast-card custom-toast-${toastType}`;
 
-        if (toastType === 'success') {
-            iconClass = 'bi-check-circle-fill';
-            defaultTitle = 'Berhasil';
-        } else if (toastType === 'error' || toastType === 'danger') {
-            iconClass = 'bi-exclamation-triangle-fill';
-            defaultTitle = 'Gagal';
-        } else if (toastType === 'warning') {
-            iconClass = 'bi-exclamation-diamond-fill';
-            defaultTitle = 'Peringatan';
-        }
+            let iconClass = 'bi-info-circle-fill';
+            let defaultTitle = 'Informasi';
 
-        const finalTitle = title || defaultTitle;
+            if (toastType === 'success') {
+                iconClass = 'bi-check-circle-fill';
+                defaultTitle = 'Berhasil';
+            } else if (toastType === 'error' || toastType === 'danger') {
+                iconClass = 'bi-exclamation-triangle-fill';
+                defaultTitle = 'Gagal';
+            } else if (toastType === 'warning') {
+                iconClass = 'bi-exclamation-diamond-fill';
+                defaultTitle = 'Peringatan';
+            }
 
-        toast.innerHTML = `
+            const finalTitle = title || defaultTitle;
+
+            toast.innerHTML = `
             <div class="custom-toast-icon-box">
                 <i class="bi ${iconClass}"></i>
             </div>
@@ -315,158 +352,177 @@
             <button type="button" class="custom-toast-close" title="Tutup">&times;</button>
         `;
 
-        const closeBtn = toast.querySelector('.custom-toast-close');
-        closeBtn.onclick = function() {
-            toast.classList.add('slide-out');
-            setTimeout(() => toast.remove(), 250);
-        };
-
-        container.appendChild(toast);
-
-        // Auto remove after 5s
-        setTimeout(() => {
-            if (toast.parentElement) {
+            const closeBtn = toast.querySelector('.custom-toast-close');
+            closeBtn.onclick = function() {
                 toast.classList.add('slide-out');
                 setTimeout(() => toast.remove(), 250);
-            }
-        }, 5000);
-    };
+            };
 
-    // Global Alias
-    window.showToast = window.showCustomToast;
+            container.appendChild(toast);
 
-    // ----------------------------------------------------
-    // Modal Dispatcher
-    // ----------------------------------------------------
-    let activeConfirmCallback = null;
-
-    window.showCustomConfirm = function(options) {
-        const modal = document.getElementById('custom-confirm-modal');
-        const card = document.getElementById('custom-modal-card');
-        const iconEl = document.getElementById('custom-modal-icon');
-        const titleEl = document.getElementById('custom-modal-title');
-        const textEl = document.getElementById('custom-modal-text');
-        const btnConfirm = document.getElementById('custom-modal-btn-confirm');
-        const btnCancel = document.getElementById('custom-modal-btn-cancel');
-
-        if (!modal) return;
-
-        titleEl.textContent = options.title || 'Konfirmasi';
-        textEl.textContent = options.text || 'Apakah Anda yakin ingin melanjutkan?';
-        btnConfirm.textContent = options.confirmText || 'Ya, Lanjutkan';
-        btnCancel.textContent = options.cancelText || 'Batal';
-
-        const iconType = (options.icon || 'warning').toLowerCase();
-        if (iconType === 'danger' || iconType === 'error') {
-            card.className = 'custom-modal-card custom-modal-danger';
-            iconEl.className = 'bi bi-trash3-fill';
-            btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-danger';
-        } else if (iconType === 'warning') {
-            card.className = 'custom-modal-card custom-modal-warning';
-            iconEl.className = 'bi bi-exclamation-triangle-fill';
-            btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-primary';
-        } else {
-            card.className = 'custom-modal-card custom-modal-info';
-            iconEl.className = 'bi bi-info-circle-fill';
-            btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-primary';
-        }
-
-        activeConfirmCallback = options.onConfirm || null;
-        modal.classList.add('active');
-    };
-
-    window.closeCustomModal = function() {
-        const modal = document.getElementById('custom-confirm-modal');
-        if (modal) modal.classList.remove('active');
-        activeConfirmCallback = null;
-    };
-
-    // Init function that runs regardless of DOM ready timing
-    function initCustomAlerts() {
-        const btnConfirm = document.getElementById('custom-modal-btn-confirm');
-        const btnCancel = document.getElementById('custom-modal-btn-cancel');
-
-        if (btnConfirm) {
-            btnConfirm.onclick = function() {
-                if (typeof activeConfirmCallback === 'function') {
-                    activeConfirmCallback();
+            // Auto remove after 5s
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.classList.add('slide-out');
+                    setTimeout(() => toast.remove(), 250);
                 }
-                window.closeCustomModal();
-            };
-        }
+            }, 5000);
+        };
 
-        if (btnCancel) {
-            btnCancel.onclick = function() {
-                window.closeCustomModal();
-            };
-        }
+        // Global Alias
+        window.showToast = window.showCustomToast;
 
-        // Auto bind delete-form submit handlers
-        document.querySelectorAll('form.delete-form, form[data-confirm]').forEach(form => {
-            form.onsubmit = function(e) {
-                if (form.dataset.confirmed === 'true') return true;
+        // ----------------------------------------------------
+        // Modal Dispatcher
+        // ----------------------------------------------------
+        let activeConfirmCallback = null;
 
-                e.preventDefault();
-                const confirmMsg = form.dataset.confirm || 'Tindakan ini tidak dapat dibatalkan!';
-                const confirmTitle = form.dataset.title || 'Apakah Anda Yakin?';
+        window.showCustomConfirm = function(options) {
+            const modal = document.getElementById('custom-confirm-modal');
+            const card = document.getElementById('custom-modal-card');
+            const iconEl = document.getElementById('custom-modal-icon');
+            const titleEl = document.getElementById('custom-modal-title');
+            const textEl = document.getElementById('custom-modal-text');
+            const btnConfirm = document.getElementById('custom-modal-btn-confirm');
+            const btnCancel = document.getElementById('custom-modal-btn-cancel');
 
-                window.showCustomConfirm({
-                    title: confirmTitle,
-                    text: confirmMsg,
-                    icon: 'danger',
-                    confirmText: 'Ya, Hapus!',
-                    cancelText: 'Batal',
-                    onConfirm: () => {
-                        form.dataset.confirmed = 'true';
-                        form.submit();
+            if (!modal) return;
+
+            titleEl.textContent = options.title || 'Konfirmasi';
+            textEl.textContent = options.text || 'Apakah Anda yakin ingin melanjutkan?';
+            btnConfirm.textContent = options.confirmText || 'Ya, Lanjutkan';
+            btnCancel.textContent = options.cancelText || 'Batal';
+
+            const iconType = (options.icon || 'warning').toLowerCase();
+            if (iconType === 'danger' || iconType === 'error') {
+                card.className = 'custom-modal-card custom-modal-danger';
+                iconEl.className = 'bi bi-trash3-fill';
+                btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-danger';
+            } else if (iconType === 'warning') {
+                card.className = 'custom-modal-card custom-modal-warning';
+                iconEl.className = 'bi bi-exclamation-triangle-fill';
+                btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-primary';
+            } else {
+                card.className = 'custom-modal-card custom-modal-info';
+                iconEl.className = 'bi bi-info-circle-fill';
+                btnConfirm.className = 'custom-modal-btn custom-modal-btn-confirm-primary';
+            }
+
+            activeConfirmCallback = options.onConfirm || null;
+            modal.classList.add('active');
+        };
+
+        window.closeCustomModal = function() {
+            const modal = document.getElementById('custom-confirm-modal');
+            if (modal) modal.classList.remove('active');
+            activeConfirmCallback = null;
+        };
+
+        // Init function that runs regardless of DOM ready timing
+        function initCustomAlerts() {
+            const btnConfirm = document.getElementById('custom-modal-btn-confirm');
+            const btnCancel = document.getElementById('custom-modal-btn-cancel');
+
+            if (btnConfirm) {
+                btnConfirm.onclick = function() {
+                    if (typeof activeConfirmCallback === 'function') {
+                        activeConfirmCallback();
                     }
-                });
-                return false;
-            };
-        });
+                    window.closeCustomModal();
+                };
+            }
 
-        // ----------------------------------------------------
-        // Auto Parse All Laravel Sessions (Direct & SweetAlert Fallback)
-        // ----------------------------------------------------
-        @if(session('success'))
-            window.showCustomToast(@json(session('success')), 'success');
-        @endif
+            if (btnCancel) {
+                btnCancel.onclick = function() {
+                    window.closeCustomModal();
+                };
+            }
 
-        @if(session('error'))
-            window.showCustomToast(@json(session('error')), 'error');
-        @endif
+            // Auto bind delete-form submit handlers
+            document.querySelectorAll('form.delete-form, form[data-confirm]').forEach(form => {
+                form.onsubmit = function(e) {
+                    if (form.dataset.confirmed === 'true') return true;
 
-        @if(session('info'))
-            window.showCustomToast(@json(session('info')), 'info');
-        @endif
+                    e.preventDefault();
+                    const confirmMsg = form.dataset.confirm || 'Tindakan ini tidak dapat dibatalkan!';
+                    const confirmTitle = form.dataset.title || 'Apakah Anda Yakin?';
 
-        @if(session('warning'))
-            window.showCustomToast(@json(session('warning')), 'warning');
-        @endif
+                    window.showCustomConfirm({
+                        title: confirmTitle,
+                        text: confirmMsg,
+                        icon: 'danger',
+                        confirmText: 'Ya, Hapus!',
+                        cancelText: 'Batal',
+                        onConfirm: () => {
+                            form.dataset.confirmed = 'true';
+                            form.submit();
+                        }
+                    });
+                    return false;
+                };
+            });
 
-        @if(session('status'))
-            window.showCustomToast(@json(session('status')), 'info');
-        @endif
-
-        @if(session('sweetalert.config') || session('alert.config'))
-            @php
-                $rawSwal = session('sweetalert.config') ?: session('alert.config');
-                $swal = is_array($rawSwal) ? $rawSwal : (is_string($rawSwal) ? json_decode($rawSwal, true) : null);
-            @endphp
-            @if($swal && is_array($swal))
-                window.showCustomToast(
-                    @json(($swal['text'] ?? '') ?: ($swal['title'] ?? '')),
-                    @json($swal['icon'] ?? 'info'),
-                    @json(($swal['title'] ?? '') !== ($swal['text'] ?? '') ? ($swal['title'] ?? null) : null)
-                );
+            // ----------------------------------------------------
+            // Auto Parse All Laravel Sessions (Direct & SweetAlert Fallback)
+            // ----------------------------------------------------
+            @if (session('success'))
+                window.showCustomToast(@json(session('success')), 'success');
             @endif
-        @endif
-    }
 
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(initCustomAlerts, 50);
-    } else {
-        document.addEventListener('DOMContentLoaded', initCustomAlerts);
-    }
-})();
+            @if (session('error'))
+                window.showCustomToast(@json(session('error')), 'error');
+            @endif
+
+            @if (session('info'))
+                window.showCustomToast(@json(session('info')), 'info');
+            @endif
+
+            @if (session('warning'))
+                window.showCustomToast(@json(session('warning')), 'warning');
+            @endif
+
+            @if (session('status'))
+                window.showCustomToast(@json(session('status')), 'info');
+            @endif
+
+            @if (session('sweetalert.config') || session('alert.config'))
+                @php
+                    $rawSwal = session('sweetalert.config') ?: session('alert.config');
+                    $swal = is_array($rawSwal) ? $rawSwal : (is_string($rawSwal) ? json_decode($rawSwal, true) : null);
+                @endphp
+                @if ($swal && is_array($swal))
+                    window.showCustomToast(
+                        @json($swal['text'] ?? '' ?: $swal['title'] ?? ''),
+                        @json($swal['icon'] ?? 'info'),
+                        @json(($swal['title'] ?? '') !== ($swal['text'] ?? '') ? $swal['title'] ?? null : null)
+                    );
+                @endif
+            @endif
+        }
+
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            setTimeout(initCustomAlerts, 50);
+        } else {
+            document.addEventListener('DOMContentLoaded', initCustomAlerts);
+        }
+    })();
 </script>
+
+/* Mobile: toast full width on small screens */
+@media (max-width: 480px) {
+#custom-toast-container {
+top: 75px !important;
+right: 12px !important;
+left: 12px !important;
+max-width: 100% !important;
+width: calc(100% - 24px) !important;
+}
+.custom-toast-card {
+padding: 12px 14px !important;
+border-radius: 14px !important;
+}
+.custom-modal-card {
+margin: 0 12px !important;
+padding: 20px !important;
+}
+}
