@@ -27,7 +27,7 @@ class GoogleController extends Controller
         try {
             // Socialite sudah dikonfigurasi dengan Guzzle verify => false di AppServiceProvider
             $googleUser = Socialite::driver('google')->user();
-            
+
             $user = User::where('email', $googleUser->getEmail())->first();
 
             if ($user) {
@@ -46,10 +46,10 @@ class GoogleController extends Controller
 
                 // Langsung gaskeun redirect buat user yang udah lengkap datanya
                 if ($user->role == 'superadmin') {
-                    Alert::success('Login Mantap!', 'Welcome back, Superadmin! Siap-siap ngatur dunia 😎');
+                    Alert::success('Login Berhasil!', 'Welcome back, Superadmin! Selamat datang kembali.');
                     return redirect()->route('dashboard-superadmin');
                 } else {
-                    Alert::success('Login Mantap!', 'Halo bro, selamat datang lagi di Linkskuy!');
+                    Alert::success('Login Berhasil!', 'Halo bro, selamat datang lagi di retcheStudio!');
                     return redirect()->route('index');
                 }
             }
@@ -73,21 +73,23 @@ class GoogleController extends Controller
             // Handle invalid state exception dengan redirect dan alert
             Alert::error('Sesi OAuth tidak valid', 'Silakan coba login lagi, bro!');
             return redirect('/login');
-            
+
         } catch (\Exception $e) {
             // Handle SSL certificate errors dan error lainnya dengan redirect dan alert
             $errorMessage = $e->getMessage();
             $customMessage = 'Terjadi kesalahan saat login dengan Google, bro!';
 
-            if (strpos($errorMessage, 'SSL certificate problem') !== false || 
-                strpos($errorMessage, 'cURL error 60') !== false) {
+            if (
+                strpos($errorMessage, 'SSL certificate problem') !== false ||
+                strpos($errorMessage, 'cURL error 60') !== false
+            ) {
                 $customMessage = 'Masalah SSL Certificate. Terjadi masalah dengan sertifikat SSL. Silakan coba lagi atau hubungi administrator.';
             } elseif (strpos($errorMessage, 'Client error') !== false) {
                 $customMessage = 'Error OAuth. Terjadi kesalahan pada OAuth. Pastikan konfigurasi Google OAuth sudah benar.';
             } else {
                 $customMessage = 'Terjadi kesalahan saat login dengan Google: ' . $errorMessage;
             }
-            
+
             Alert::error('Error Google OAuth', $customMessage);
             return redirect('/login');
         }
@@ -136,9 +138,9 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-            Alert::success('Akun berhasil dibuat lewat Google!', 'Selamat datang di Linkskuy!');
+            Alert::success('Akun berhasil dibuat lewat Google!', 'Selamat datang di retcheStudio!');
             return redirect()->route('index');
-            
+
         } catch (\Exception $e) {
             Alert::error('Gagal menyelesaikan pendaftaran', 'Terjadi kesalahan. Silakan coba lagi, bro!');
             return back()->withInput();

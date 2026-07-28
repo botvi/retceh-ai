@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Testimoni extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'pesan'];
+    protected $fillable = ['user_id', 'pesan', 'name', 'role', 'rating', 'status'];
 
     public function user()
     {

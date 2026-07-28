@@ -11,7 +11,7 @@ class ApiWhatsappController extends Controller
 {
     public function index()
     {
-        $whatsappApi = WhatsappApi::first();
+        $whatsappApi = WhatsappApi::first() ?? new WhatsappApi();
         return view('pagesuperadmin.api_whatsapp.index', compact('whatsappApi'));
     }
 

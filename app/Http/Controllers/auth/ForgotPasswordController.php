@@ -18,20 +18,27 @@ class ForgotPasswordController extends Controller
         return view('auth.resetpassword.request-otp');
     }
 
-    public function showVerifyOtpForm()
+    public function showVerifyOtpForm(Request $request)
     {
-        return view('auth.resetpassword.verify-otp');
+        $no_wa = $request->no_wa ?? session('no_wa');
+        if (!$no_wa) {
+            Alert::error('Error', 'Sesi verifikasi kadaluarsa. Silakan request OTP kembali.');
+            return redirect()->route('forgot-password');
+        }
+        session()->flash('no_wa', $no_wa);
+        return view('auth.resetpassword.verify-otp', compact('no_wa'));
     }
 
     public function showResetPasswordForm(Request $request)
     {
         $no_wa = $request->no_wa ?? session('no_wa');
-        
+
         if (!$no_wa) {
             Alert::error('Error', 'Nomor WhatsApp tidak ditemukan');
             return redirect()->route('forgot-password');
         }
-        
+
+        session()->flash('no_wa', $no_wa);
         return view('auth.resetpassword.reset-password', ['no_wa' => $no_wa]);
     }
 
@@ -47,6 +54,26 @@ class ForgotPasswordController extends Controller
             Alert::error('Error', 'Nomor WhatsApp tidak ditemukan di sistem kami');
             return back()->withInput()->withErrors(['no_wa' => 'Nomor WhatsApp tidak terdaftar']);
         }
+
+        // Cek apakah ada OTP yang masih aktif (belum 5 menit)
+        $existingReset = DB::table('password_resets')
+            ->where('no_wa', $request->no_wa)
+            ->where('created_at', '>', Carbon::now()->subMinutes(5))
+            ->first();
+
+        if ($existingReset) {
+            $remainingTime = Carbon::parse($existingReset->created_at)->addMinutes(5)->diffInSeconds(Carbon::now());
+            $remainingMinutes = ceil($remainingTime / 60);
+
+            Alert::error('Error', "Anda harus menunggu {$remainingMinutes} menit lagi sebelum bisa meminta OTP baru");
+            return back()->withInput()->withErrors(['no_wa' => "Tunggu {$remainingMinutes} menit lagi untuk meminta OTP baru"]);
+        }
+
+        // Hapus OTP lama yang sudah kadaluarsa
+        DB::table('password_resets')
+            ->where('no_wa', $request->no_wa)
+            ->where('created_at', '<=', Carbon::now()->subMinutes(5))
+            ->delete();
 
         $otp = rand(100000, 999999);
 
@@ -80,6 +107,7 @@ class ForgotPasswordController extends Controller
             ->first();
 
         if (!$reset) {
+            session()->flash('no_wa', $request->no_wa);
             Alert::error('Error', 'OTP tidak valid atau kadaluarsa');
             return back()->withErrors(['otp' => 'OTP tidak valid atau kadaluarsa']);
         }
@@ -102,12 +130,27 @@ class ForgotPasswordController extends Controller
         DB::table('password_resets')->where('no_wa', $request->no_wa)->delete();
 
         Alert::success('Berhasil', 'Password berhasil direset');
-        return redirect()->route('login')->with('success', 'Password berhasil direset');
+        return redirect()->route('login');
+    }
+
+    public function cleanupExpiredOtps()
+    {
+        $deletedCount = DB::table('password_resets')
+            ->where('created_at', '<=', Carbon::now()->subMinutes(5))
+            ->delete();
+
+        return $deletedCount;
     }
 
     private function sendWhatsapp($no_wa, $message)
     {
-        $token = WhatsappApi::first()->access_token;
+        $whatsappApi = WhatsappApi::first();
+        if (!$whatsappApi || !$whatsappApi->access_token) {
+            \Log::error("Gagal mengirim WhatsApp OTP: Token API Whatsapp belum dikonfigurasi di dashboard superadmin.");
+            return false;
+        }
+
+        $token = $whatsappApi->access_token;
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => 'https://api.fonnte.com/send',
@@ -120,6 +163,7 @@ class ForgotPasswordController extends Controller
             CURLOPT_HTTPHEADER => [
                 "Authorization: $token"
             ],
+            CURLOPT_SSL_VERIFYPEER => false
         ]);
         $response = curl_exec($curl);
         curl_close($curl);

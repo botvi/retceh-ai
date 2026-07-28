@@ -4,59 +4,69 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class ProfilController extends Controller
 {
     public function index()
     {
-        $data = User::where('id', auth()->user()->id)->first();
-        return view('pageuser.landing.profil', compact('data'));
+        return view('pageuser.profile.index');
     }
 
     public function update(Request $request)
     {
-        $user = User::find(auth()->user()->id);
+        $user = Auth::user();
 
-        $validator = Validator::make($request->all(), [
-            'foto_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required', 
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'username' => 'required|unique:users,username,' . $user->id,
-            'no_wa' => 'required',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:50|unique:users,username,' . $user->id,
+            'no_wa' => 'required|string|max:20|unique:users,no_wa,' . $user->id,
+            'foto_profile' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
+        ], [
+            'name.required' => 'Nama lengkap wajib diisi',
+            'username.required' => 'Username wajib diisi',
+            'username.unique' => 'Username sudah digunakan oleh pengguna lain',
+            'no_wa.required' => 'Nomor WhatsApp wajib diisi',
+            'no_wa.unique' => 'Nomor WhatsApp sudah digunakan oleh pengguna lain',
+            'foto_profile.image' => 'Berkas harus berupa gambar',
+            'foto_profile.max' => 'Ukuran gambar maksimal 2MB'
         ]);
 
-        if($validator->fails()) {
-            Alert::error('Terjadi kesalahan! ' . $validator->errors()->first());
-            return redirect()->back();
-        }
+        $data = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'no_wa' => $request->no_wa
+        ];
 
-        $data = $request->except(['password', 'foto_profile']);
-
-        // Proses upload foto_profile ke folder public
         if ($request->hasFile('foto_profile')) {
             $file = $request->file('foto_profile');
-            $filename = 'profile_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/foto_profile'), $filename);
-
-            // Hapus foto lama jika ada dan bukan default
-            if ($user->foto_profile && file_exists(public_path('uploads/foto_profile/' . $user->foto_profile))) {
-                @unlink(public_path('uploads/foto_profile/' . $user->foto_profile));
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            
+            // Create folder if not exists
+            $path = public_path('uploads/foto_profile');
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path, 0777, true, true);
             }
 
+            // Delete old photo if local
+            if ($user->foto_profile && !str_starts_with($user->foto_profile, 'http')) {
+                $oldFile = public_path('uploads/foto_profile/' . $user->foto_profile);
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+            }
+
+            // Move new file
+            $file->move($path, $filename);
             $data['foto_profile'] = $filename;
         }
 
-        if($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
-        }
+        User::where('id', $user->id)->update($data);
 
-        $user->update($data);
-        Alert::success('Profil berhasil diubah!');
+        Alert::success('Berhasil', 'Profil Anda berhasil diperbarui!');
         return redirect()->back();
     }
 }

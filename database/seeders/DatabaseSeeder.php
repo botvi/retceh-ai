@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SuperadminSeeder::class,
+            SettingsSeeder::class,
+            PackagesSeeder::class,
+            ShowcaseItemsSeeder::class,
+            TestimonisSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

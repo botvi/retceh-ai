@@ -1,134 +1,118 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linkskuy - Lengkapi Pendaftaran Google</title>
-
-  <!-- favicon -->
-  <link rel="shortcut icon" href="{{ asset('linkskuy') }}/assets/images/logo.ico" type="image/x-icon">
-
-  <!-- custom css link -->
-  <link rel="stylesheet" href="{{ asset('linkskuy') }}/assets/css/style.css">
-  <link rel="stylesheet" href="{{ asset('linkskuy') }}/assets/css/authstyle.css">
-  
-  <style>
-    .error-message {
-      color: #dc3545;
-      font-size: 0.875rem;
-      margin-top: 5px;
-      display: block;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lengkapi Pendaftaran - retcehStudio</title>
     
-    .is-invalid {
-      border-color: #dc3545 !important;
-    }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    .alert {
-      margin-bottom: 20px;
-    }
-  </style>
-
-  <!-- google font link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <style>
+        @theme {
+            --font-sans: 'Outfit', sans-serif;
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --color-wise-green: #9fe870;
+            --color-wise-green-hover: #8cd85d;
+            --color-forest: #163300;
+        }
+        body {
+            font-family: 'Outfit', sans-serif !important;
+            background-color: #f4f6f2 !important;
+            background-image: radial-gradient(rgba(22, 51, 0, 0.04) 1.2px, transparent 1.2px) !important;
+            background-size: 20px 20px !important;
+        }
+        input {
+            border: 1.5px solid #e6ece1 !important;
+            background-color: #ffffff !important;
+            border-radius: 12px !important;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.875rem !important;
+            transition: all 0.2s ease !important;
+            color: #0e0f0c !important;
+        }
+        input:focus {
+            outline: none !important;
+            border-color: #163300 !important;
+            box-shadow: 0 0 0 2.5px rgba(22, 51, 0, 0.08) !important;
+        }
+    </style>
 </head>
+<body class="text-zinc-900 min-h-screen antialiased flex flex-col justify-center items-center py-10 px-4">
 
-<body>
-  <!-- #MAIN -->
-  <main>
-    <!-- Complete Registration Container -->
-    <div class="login-container">
-      <!-- Complete Registration Form -->
-      <div class="login-form-container">
-        <div class="form-header">
-          <div class="google-success-icon">
-            <ion-icon name="checkmark-circle" style="font-size: 48px; color: #22c44d;"></ion-icon>
-          </div>
-          <h2 class="form-title">Lengkapi Pendaftaran</h2>
-          <p class="form-subtitle">Akun Google Anda berhasil terhubung! Sekarang lengkapi data untuk menyelesaikan pendaftaran</p>
-        </div>
+    <!-- Brand Logo -->
+    <a href="{{ route('index') }}" class="flex items-center cursor-pointer font-bold text-zinc-900 no-underline mb-6">
+        <span class="tracking-tighter text-2xl font-black text-forest lowercase">retche</span>
+        <span class="relative inline-block text-wise-green bg-forest px-1.5 py-0.5 rounded-lg tracking-tighter text-2xl font-black lowercase align-middle">
+            studio.ai
+        </span>
+    </a>
 
-        <form method="POST" action="{{ route('google.complete.register') }}" class="login-form" >
-          @csrf
-          
-          <!-- Hidden input untuk user_id -->
-          <input type="hidden" name="user_id" value="{{ $user->id ?? '' }}">
-          
-          @if ($errors->any())
-            <div class="alert alert-danger" style="background-color: #fee; border: 1px solid #fcc; color: #c33; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
-              <ul style="margin: 0; padding-left: 20px;">
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-              </ul>
+    <!-- View: Complete Registration Page -->
+    <div id="view-complete-google-register" class="w-full max-w-sm">
+        <div class="rounded-3xl border border-zinc-200 bg-white p-6 shadow-xl space-y-6 transition-all duration-300 hover:shadow-2xl">
+            <div class="text-center space-y-1.5">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green/10 text-forest text-[11px] font-bold shadow-sm border border-wise-green/20 text-emerald-600">
+                    <i class="bi bi-check-circle-fill"></i> GOOGLE TERHUBUNG
+                </div>
+                <h2 class="text-xl font-extrabold tracking-tight text-forest mt-1.5 lowercase">lengkapi data.</h2>
+                <p class="text-xs text-zinc-550 leading-relaxed">Hubungkan akun Google Anda dengan melengkapi data berikut.</p>
             </div>
-          @endif
-          
-          <!-- Username Field -->
-          <div class="form-group">
-            <label for="username" class="form-label">
-              <ion-icon name="at-outline"></ion-icon>
-              Username
-            </label>
-            <input type="text" id="username" name="username" class="form-input @error('username') is-invalid @enderror"
-              placeholder="Buat username unik untuk akun Anda" value="{{ old('username') }}" required>
-            <small class="form-help">Username akan digunakan untuk login dan URL profil Anda</small>
-            @error('username')
-              <small class="error-message">{{ $message }}</small>
-            @enderror
-          </div>
 
-          <!-- WhatsApp Number Field -->
-          <div class="form-group">
-            <label for="no_wa" class="form-label">
-              <ion-icon name="logo-whatsapp"></ion-icon>
-              Nomor WhatsApp
-            </label>
-            <input type="tel" id="no_wa" name="no_wa" class="form-input @error('no_wa') is-invalid @enderror"
-              placeholder="Contoh: 08123456789" value="{{ old('no_wa') }}" required>
-            <small class="form-help">Nomor WhatsApp untuk verifikasi dan notifikasi</small>
-            @error('no_wa')
-              <small class="error-message">{{ $message }}</small>
-            @enderror
-          </div>
+            <!-- Validation Errors -->
+            @if ($errors->any())
+                <div class="p-3 bg-red-50 text-red-600 rounded-xl text-xs space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <div>• {{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
 
-          <!-- Terms & Conditions -->
-          <div class="form-group">
-            <label class="checkbox-container">
-              <input type="checkbox" id="agree-terms" name="agree-terms" required>
-              <span class="checkmark"></span>
-              Saya setuju dengan <a href="#" class="terms-link">Syarat & Ketentuan</a> dan <a href="#" class="terms-link">Kebijakan Privasi</a>
-            </label>
-            @error('agree-terms')
-              <small class="error-message">{{ $message }}</small>
-            @enderror
-          </div>
+            <form action="{{ route('google.complete.register') }}" method="POST" class="space-y-4">
+                @csrf
+                
+                <!-- Hidden user_id -->
+                <input type="hidden" name="user_id" value="{{ $user->id ?? '' }}">
 
-          <!-- Complete Registration Button -->
-          <button type="submit" class="button-custom-shine"
-            style="padding: 8px 18px; background-color: #22c44d; color: #fff; border-radius: 6px; border: 2px solid #222; font-size: 1rem; font-family: inherit; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s, color 0.2s, box-shadow 0.2s; display: flex; justify-content: center; align-items: center; text-align: center; width: 100%;">
-            Selesaikan Pendaftaran
-          </button>
+                <div class="space-y-1.5">
+                    <label for="username" class="text-[11px] font-bold text-forest uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="bi bi-at text-xs text-zinc-400"></i> Username
+                    </label>
+                    <input type="text" name="username" id="username" required placeholder="Buat username unik" value="{{ old('username') }}" class="w-full">
+                </div>
+                <div class="space-y-1.5">
+                    <label for="no_wa" class="text-[11px] font-bold text-forest uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="bi bi-whatsapp text-xs text-zinc-400"></i> Nomor WhatsApp
+                    </label>
+                    <input type="tel" name="no_wa" id="no_wa" required placeholder="Contoh: 081234567890" value="{{ old('no_wa') }}" class="w-full">
+                </div>
 
-          <!-- Back to Login Link -->
-          <div class="register-section">
-            <p>Sudah punya akun? <a href="{{ route('login') }}" class="register-link">Masuk sekarang</a></p>
-          </div>
-        </form>
-      </div>
+                <div class="space-y-1.5 pt-1">
+                    <label class="inline-flex items-start gap-2.5 text-xs text-zinc-500 cursor-pointer select-none">
+                        <input type="checkbox" name="agree-terms" required class="mt-0.5 rounded border-zinc-350 text-wise-green focus:ring-wise-green">
+                        <span>Saya menyetujui syarat & ketentuan serta kebijakan privasi.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full py-3 px-5 bg-wise-green hover:bg-wise-green-hover text-forest rounded-full font-extrabold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md hover:-translate-y-0.5 active:translate-y-0 text-center flex items-center justify-center gap-2 border-none">
+                    Selesaikan Pendaftaran
+                </button>
+            </form>
+
+            <div class="text-center pt-2">
+                <a href="{{ route('login') }}" class="text-xs text-zinc-500 hover:text-zinc-900 transition underline font-semibold">Kembali ke Masuk</a>
+            </div>
+        </div>
     </div>
-  </main>
 
-  <!-- custom js link -->
-  <script src="{{ asset('linkskuy') }}/assets/js/auth.js"></script>
-  @include('sweetalert::alert')
-  <!-- ionicon link -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons/5.5.2/dist/ionicons/ionicons.js"></script>
+    @include('components.custom-alert')
 </body>
-
 </html>

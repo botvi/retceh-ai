@@ -1,194 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.studio')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linkskuy - Home</title>
+@section('title', 'Beranda | retcehStudio')
 
-  <!-- favicon -->
-  <link rel="shortcut icon" href="{{ asset('linkskuy') }}/assets/images/logo.ico" type="image/x-icon">
+@section('content')
+<main class="w-full flex-grow px-4 sm:px-6">
 
-  <!-- custom css link -->
-  <link rel="stylesheet" href="{{ asset('linkskuy') }}/assets/css/style.css">
+    <!-- View: Landing Page -->
+    <div id="view-landing" class="view-section w-full max-w-4xl mx-auto space-y-8 py-3">
+        <!-- Hero Section -->
+        <section class="text-center py-10 md:py-14 space-y-6 relative overflow-hidden">
+            <!-- Floating Glowing Aura Blobs (Aesthetics) -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+                <div class="absolute top-[10%] left-[20%] w-[250px] h-[250px] rounded-full bg-wise-green/15 blur-[60px] animate-blob-float"></div>
+                <div class="absolute bottom-[10%] right-[20%] w-[220px] h-[220px] rounded-full bg-emerald-500/10 blur-[60px] animate-blob-float-reverse"></div>
+            </div>
 
-  <!-- google font link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <!-- #MAIN -->
-  <main>
-    @include('pageuser.template.sidebar')
-    <!-- #main-content -->
-    <div class="main-content">
-      <!-- #NAVBAR -->
-      @include('pageuser.template.navbar')
-
-      <article class="home active" data-page="home">
-        <header>
-          <h2 class="h2 article-title font-custom">LINKSKUY !</h2>
-        </header>
-
-        <section class="about-text" style="margin-bottom: 50px;">
-          <div style="display: flex; align-items: center; gap: 20px;">
-            <p class="font-custom-standar" style="margin: 0; text-align: justify;">
-              Linkskuy adalah web pembuat link bio super kece dan kekinian, pas banget buat anak Gen Z yang pengen
-              tampil beda! Dengan Linkskuy, semua link pentingmu bisa dikumpulin dalam satu halaman dengan gaya yang
-              super keren dan fitur yang up to date. Web ini gampang banget dipakai, bikin profil onlinemu makin
-              estetik, unik, dan pastinya makin eksis di dunia maya!
+            <h1 class="hero-title text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-[-0.035em] text-forest max-w-4xl mx-auto leading-[0.98] sm:leading-[0.95] transition-colors duration-300 animate-fade-in-up flex flex-col items-center justify-center">
+                <span>{{ $hero_title }}</span>
+                <span class="flex flex-wrap items-center justify-center">
+                    <span>Menjadi Foto</span>
+                    <span class="relative inline-block text-wise-green bg-forest px-3 py-1 sm:py-1.5 rounded-2xl mx-2 overflow-hidden text-left align-middle whitespace-nowrap">
+                        <!-- Spacer to set width/height matching the longest word -->
+                        <span class="invisible block opacity-0 select-none pointer-events-none">Berkelas.</span>
+                        <!-- Shifter element containing the list of sliding words -->
+                        <span class="absolute left-3 right-3 top-1 sm:top-1.5 animate-word-shifter flex flex-col">
+                            @foreach($hero_words as $word)
+                                <span>{{ $word }}</span>
+                            @endforeach
+                            <!-- repeat first word for loop transition -->
+                            @if(count($hero_words) > 0)
+                                <span>{{ $hero_words[0] }}</span>
+                            @endif
+                        </span>
+                    </span>
+                </span>
+            </h1>
+            <p class="text-sm sm:text-base text-zinc-500 font-normal max-w-lg mx-auto leading-relaxed transition-colors duration-300 animate-fade-in-up delay-1">
+                {{ $hero_subtitle }}
             </p>
-          </div>
-          <div class="font-custom-secondary" style="text-align: center;">
-            <a class="button-custom-shine" href="{{ url('/skuy') }}"
-              style="margin-top: 20px; display: inline-block; padding: 10px 25px; background-color: #22c44d; color: #fff; border-radius: 8px; border: 2px solid #222; font-size: 1rem; font-family: inherit; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s, color 0.2s, box-shadow 0.2s; transform: rotate(-2deg);"
-              onmouseover="this.style.backgroundColor='#222';this.style.color='#fff';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)';this.style.transform='scale(1.05)';"
-              onmouseout="this.style.backgroundColor='#22c44d';this.style.color='#fff';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.07)';this.style.transform='rotate(-2deg)';">
-              Skuy Jadi Keren !
-            </a>
-          </div>
-        </section>
-
-        <!-- testimonials -->
-        <section class="testimonials" style="margin-bottom: 50px;">
-          <h3 class="h3 testimonials-title font-custom">Apa Nih Kata Mereka ?</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-            @foreach ($testimonis as $testimoni)
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                @php
-                  $fotoProfile = $testimoni->user->foto_profile ?? null;
-                  if ($fotoProfile) {
-                      // Jika sudah berupa URL lengkap
-                      if (Str::startsWith($fotoProfile, ['http://', 'https://'])) {
-                          $srcFoto = $fotoProfile;
-                      } else {
-                          // Jika path lokal, gunakan asset()
-                          $srcFoto = asset('uploads/foto_profile/' . $fotoProfile);
-                      }
-                  } else {
-                      $srcFoto = asset('env/logo.jpg');
-                  }
-                @endphp
-                <figure class="testimonials-avatar-box">
-                  <img src="{{ $srcFoto }}" alt="{{ $testimoni->user->name }}" width="60"
-                    data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title font-custom-standar" data-testimonials-title>{{ $testimoni->user->name }}</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p class="font-custom-standar">
-                    {{ $testimoni->pesan }}
-                  </p>
-                </div>
-              </div>
-            </li>
-            @endforeach
-          </ul>
-        </section>
-
-        <!-- testimonials modal -->
-        @if(isset($testimonis) && count($testimonis) > 0)
-        @php
-          // Ambil testimoni pertama untuk modal default
-          $modalTestimoni = $testimonis[0];
-          $fotoProfile = $modalTestimoni->user->foto_profile ?? null;
-          if ($fotoProfile) {
-              if (Str::startsWith($fotoProfile, ['http://', 'https://'])) {
-                  $srcFoto = $fotoProfile;
-              } else {
-                  $srcFoto = asset('uploads/foto_profile/' . $fotoProfile);
-              }
-          } else {
-              $srcFoto = asset('env/logo.jpg');
-          }
-        @endphp
-        <div class="modal-container" data-modal-container>
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="{{ $srcFoto }}" alt="{{ $modalTestimoni->user->name }}" width="80" data-modal-img>
-              </figure>
-
-              <img src="{{ asset('linkskuy') }}/assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-              <h4 class="h3 modal-title font-custom-standar" data-modal-title>{{ $modalTestimoni->user->name }}</h4>
-
-              <time datetime="{{ $modalTestimoni->created_at->format('Y-m-d') }}" class="font-custom-standar" >{{ $modalTestimoni->created_at->format('d M Y') }}</time>
-
-              <div data-modal-text>
-                <p class="font-custom-standar">
-                  {{ $modalTestimoni->pesan }}
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
-        @else
-        <div class="modal-container" data-modal-container>
-          <div class="overlay" data-overlay></div>
-          <section class="testimonials-modal">
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="{{ asset('env/logo.jpg') }}" alt="Tidak ada testimoni" width="80" data-modal-img>
-              </figure>
-              <img src="{{ asset('linkskuy') }}/assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-            <div class="modal-content">
-              <h4 class="h3 modal-title font-custom-standar" data-modal-title>Tidak Ada Testimoni</h4>
-              <div data-modal-text>
-                <p class="font-custom-standar">
-                  Belum ada testimoni yang tersedia.
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
-        @endif
-
-        <!-- clients -->
-        <section class="clients">
-          <h3 class="h3 clients-title font-custom">Bestie Brand</h3>
-
-          <ul class="clients-list has-scrollbar">
-            @foreach ($brands as $brand)
-            <li class="clients-item">
-              <a href="{{ $brand->link_brand }}" target="_blank">
-                  <img src="{{ asset('uploads/logo_brand/' . $brand->logo_brand) }}" alt="client logo" style="width: 150px; height: 150px; object-fit: contain;">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-2">
+                <a href="{{ route('studio.index') }}" class="btn-start-generating text-sm py-3 px-8 rounded-full font-bold transition shadow-md flex items-center justify-center gap-2 no-underline">
+                    Mulai Buat Desain
                 </a>
-            </li>
-            @endforeach
-
-           
-          </ul>
+                <a href="{{ route('topup.index') }}" class="w-full sm:w-auto text-center text-sm py-3 px-8 bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 rounded-full font-bold transition hover:-translate-y-0.5 active:translate-y-0 shadow-sm no-underline">
+                    Lihat Paket Harga
+                </a>
+            </div>
         </section>
-      </article>
+
+        <!-- Showcase Galeri Hasil: Playing Cards Deck Gallery -->
+        <section class="rounded-3xl border border-zinc-200 bg-white p-8 sm:p-10 shadow-sm overflow-hidden relative transition-colors duration-300 hover:shadow-md text-center space-y-8">
+            <div class="space-y-2">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
+                    <i class="bi bi-sparkles"></i> Galeri Sebelum & Sesudah AI
+                </div>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Kekuatan AI retcehStudio</h3>
+                <p class="text-xs text-zinc-400">Klik kartu untuk menukar posisi Foto Asli & Hasil AI</p>
+            </div>
+
+            <!-- The Deck Grid -->
+            <div id="deck-carousel" class="flex overflow-x-auto md:grid md:grid-cols-3 gap-y-24 md:gap-y-12 max-w-4xl mx-auto py-10 px-8 md:px-4 scrollbar-none snap-x snap-mandatory relative" style="perspective: 1000px; scroll-behavior: smooth;">
+                @foreach($showcase_items as $item)
+                    <!-- Product Item -->
+                    <div class="snap-center shrink-0 w-[200px] md:w-auto md:shrink carousel-deck-item group relative flex flex-col items-center select-none" style="perspective: 1000px;">
+                        <!-- Card Deck Wrapper -->
+                        <div class="deck-wrapper relative w-[200px] h-[270px] transition-all duration-300 transform-style-3d cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+                            <!-- Card 1: Foto Asli (Before - Left Card) -->
+                            <div class="absolute inset-0 bg-white border border-zinc-200 rounded-2xl shadow-md p-2 transition-all duration-500 ease-out transform origin-bottom-right rotate-[-6deg] translate-x-[-12px] z-10 flex flex-col justify-between">
+                                <span class="absolute top-3 left-3 px-2 py-0.5 bg-zinc-900 text-white rounded-full text-[8px] font-bold tracking-wider uppercase z-20">{{ $item->label_before }}</span>
+                                <div class="w-full h-[85%] rounded-xl overflow-hidden bg-zinc-50 border border-zinc-150">
+                                    <img src="{{ asset($item->image_before) }}" alt="{{ $item->title }} Asli" class="w-full h-full object-cover grayscale opacity-85 transition-all duration-300">
+                                </div>
+                                <div class="text-center py-1">
+                                    <span class="text-[8px] font-black text-zinc-400 uppercase tracking-widest">{{ $item->category_label }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Foto Hasil (After - Right Card) -->
+                            <div class="absolute inset-0 bg-white border border-zinc-200 rounded-2xl shadow-xl p-2 transition-all duration-500 ease-out transform origin-bottom-left rotate-[6deg] translate-x-[12px] z-20 flex flex-col justify-between">
+                                <span class="absolute top-3 right-3 px-2 py-0.5 bg-wise-green text-forest rounded-full text-[8px] font-bold tracking-wider uppercase z-20 shadow-sm animate-pulse">{{ $item->label_after }}</span>
+                                <div class="w-full h-[85%] rounded-xl overflow-hidden bg-zinc-50 border border-zinc-150 relative">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-40 z-10"></div>
+                                    <img src="{{ asset($item->image_after) }}" alt="{{ $item->title }} Hasil" class="w-full h-full object-cover relative">
+                                </div>
+                                <div class="text-center py-1">
+                                    <span class="text-[8px] font-black text-forest uppercase tracking-widest">Studio Render</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Description Below Deck -->
+                        <div class="mt-8 text-center space-y-1 transition-all duration-300">
+                            <h4 class="text-sm font-extrabold text-zinc-800">{{ $item->title }}</h4>
+                            <p class="text-[11px] text-zinc-400 max-w-[180px]">{{ $item->description }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section class="space-y-5 pt-4 pb-2 relative">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
+                    <i class="bi bi-rocket-takeoff-fill"></i> CEPAT & MUDAH
+                </div>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Cara Kerja retcehStudio</h3>
+                <p class="text-xs sm:text-sm text-zinc-500 max-w-lg mx-auto">
+                    Hanya butuh 3 langkah sederhana untuk menciptakan foto iklan kemasan produk bernilai komersial tinggi.
+                </p>
+            </div>
+
+            <!-- Steps Cards Flow -->
+            <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto px-4 pt-4">
+                <div class="hidden md:block absolute top-[52px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-wise-green via-zinc-200 to-wise-green -z-10"></div>
+
+                <!-- Step 1 -->
+                <div class="bg-white border border-zinc-200 rounded-3xl p-6 text-center space-y-4 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-zinc-300 relative group">
+                    <div class="w-12 h-12 rounded-full bg-wise-green text-forest flex items-center justify-center mx-auto text-base font-extrabold shadow-md ring-4 ring-zinc-50 group-hover:scale-110 transition-transform duration-300">1</div>
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Unggah Foto Produk</h4>
+                        <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed">
+                            Siapkan foto produk mentah Anda. Pastikan produk terlihat jelas di bawah pencahayaan standar tanpa terhalang.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white border border-zinc-200 rounded-3xl p-6 text-center space-y-4 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-zinc-300 relative group">
+                    <div class="w-12 h-12 rounded-full bg-wise-green text-forest flex items-center justify-center mx-auto text-base font-extrabold shadow-md ring-4 ring-zinc-50 group-hover:scale-110 transition-transform duration-300">2</div>
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Tulis Catatan Opsional</h4>
+                        <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed">
+                            Tulis detail properti latar belakang atau nuansa studio yang diinginkan (misal: nuansa pantai hangat, studio hitam).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white border border-zinc-200 rounded-3xl p-6 text-center space-y-4 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-zinc-300 relative group">
+                    <div class="w-12 h-12 rounded-full bg-wise-green text-forest flex items-center justify-center mx-auto text-base font-extrabold shadow-md ring-4 ring-zinc-50 group-hover:scale-110 transition-transform duration-300">3</div>
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Gunakan Gelas Kopi</h4>
+                        <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed">
+                            Klik Generate. AI akan merancang latar belakang dan efek pencahayaan profesional dalam hitungan detik.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Props -->
+        <section class="space-y-5 pt-4 pb-2">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
+                    <i class="bi bi-shield-check"></i> KEUNGGULAN UTAMA
+                </div>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Mengapa Memilih retcehStudio?</h3>
+                <p class="text-xs sm:text-sm text-zinc-500 max-w-lg mx-auto">
+                    Platform desain bertenaga AI yang dirancang khusus untuk meningkatkan konversi penjualan produk Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto px-4">
+                <div class="p-6 rounded-3xl border border-zinc-200 bg-white space-y-3 text-left transition-all duration-300 hover:shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                        <i class="bi bi-wallet2 text-lg"></i>
+                    </div>
+                    <h4 class="text-sm font-extrabold text-zinc-800">Hemat Biaya 90%</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">
+                        Tidak perlu membayar jutaan rupiah untuk sewa fotografer dan studio foto fisik. Ciptakan puluhan variasi iklan komersial berkualitas tinggi hanya dengan beberapa ribu rupiah.
+                    </p>
+                </div>
+                <div class="p-6 rounded-3xl border border-zinc-200 bg-white space-y-3 text-left transition-all duration-300 hover:shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600">
+                        <i class="bi bi-cup-hot text-lg"></i>
+                    </div>
+                    <h4 class="text-sm font-extrabold text-zinc-800">Pembuatan Instan 15 Detik</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">
+                        Hindari waktu tunggu berminggu-minggu untuk proses editing foto. AI kami memproses dan menghasilkan latar belakang serta pencahayaan realistis dalam waktu kurang dari 15 detik.
+                    </p>
+                </div>
+                <div class="p-6 rounded-3xl border border-zinc-200 bg-white space-y-3 text-left transition-all duration-300 hover:shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600">
+                        <i class="bi bi-award text-lg"></i>
+                    </div>
+                    <h4 class="text-sm font-extrabold text-zinc-800">Resolusi Komersial Premium</h4>
+                    <p class="text-xs text-zinc-500 leading-relaxed">
+                        Foto hasil memiliki detail cahaya, bayangan objek, dan resolusi tajam yang siap digunakan untuk banner e-commerce, iklan Instagram/TikTok, hingga cetakan promosi fisik.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews / Testimonials Section -->
+        <section class="space-y-5 pt-4 pb-2">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-zinc-150 pb-4">
+                <div class="text-left space-y-2">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
+                        <i class="bi bi-heart-fill text-red-500"></i> TESTIMONI
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Ulasan Pelanggan</h3>
+                    <p class="text-xs text-zinc-500">Apa kata pelaku bisnis dan kreator yang menggunakan retcehStudio.</p>
+                </div>
+                <a href="{{ route('review.index') }}" class="inline-flex items-center gap-1.5 py-2 px-5 bg-zinc-900 text-white hover:bg-zinc-800 rounded-full font-bold text-xs transition hover:-translate-y-0.5 active:translate-y-0 no-underline shadow-md w-fit">
+                    <i class="bi bi-chat-heart-fill"></i> Beri Ulasan Anda
+                </a>
+            </div>
+
+            <!-- Dynamic Horizontally Scrollable Reviews List -->
+            <div class="flex overflow-x-auto gap-6 text-left pb-6 pt-2 scrollbar-none snap-x snap-mandatory -mx-4 px-4">
+                @forelse($testimonis as $testi)
+                    <div class="snap-center shrink-0 w-[280px] bg-white border border-zinc-200 rounded-3xl p-5 shadow-sm space-y-4 transition-all duration-300 hover:shadow-md hover:border-zinc-300">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-forest text-wise-green flex items-center justify-center font-extrabold text-sm shadow-inner uppercase">
+                                {{ substr($testi->name ?? ($testi->user->name ?? 'U'), 0, 1) }}
+                            </div>
+                            <div class="text-left leading-tight">
+                                <h4 class="text-xs font-extrabold text-zinc-800">{{ $testi->name ?? ($testi->user->name ?? 'User') }}</h4>
+                                <span class="text-[10px] text-zinc-400 font-semibold">{{ $testi->role ?? 'Bisnis' }}</span>
+                            </div>
+                        </div>
+                        <!-- Star Rating display -->
+                        <div class="flex items-center gap-0.5 text-amber-500 text-xs">
+                            @for($i = 1; $i <= 5; $i++)
+                                @if($i <= $testi->rating)
+                                    <i class="bi bi-star-fill"></i>
+                                @else
+                                    <i class="bi bi-star"></i>
+                                @endif
+                            @endfor
+                        </div>
+                        <p class="text-xs text-zinc-550 leading-relaxed font-normal">
+                            "{{ $testi->pesan }}"
+                        </p>
+                    </div>
+                @empty
+                    <p class="text-xs text-zinc-400 italic">Belum ada ulasan saat ini.</p>
+                @endforelse
+            </div>
+        </section>
+
+        <!-- Bottom CTA Section -->
+        <section class="rounded-3xl bg-wise-green p-8 sm:p-12 text-center relative overflow-hidden transition-all duration-300 shadow-lg">
+            <div class="absolute -top-12 -left-12 w-48 h-48 bg-forest/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-forest/10 rounded-full blur-3xl"></div>
+
+            <div class="relative max-w-xl mx-auto space-y-6">
+                <h3 class="hero-title text-3xl sm:text-4xl font-extrabold tracking-tight leading-none lowercase" style="color: var(--color-forest) !important;">retcehstudio.</h3>
+                <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-forest) !important;">
+                    Siap mengubah foto produk biasa Anda menjadi aset visual premium dengan cepat? Gabung sekarang dan dapatkan 50 gelas kopi gratis untuk memulai.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <a href="{{ route('studio.index') }}" class="w-full sm:w-auto px-8 py-3 bg-forest text-wise-green hover:bg-forest-hover rounded-full font-bold text-xs transition uppercase tracking-wider shadow hover:-translate-y-0.5 active:translate-y-0 no-underline">
+                        Mulai Desain Sekarang
+                    </a>
+                    @guest
+                        <a href="{{ route('register') }}" class="w-full sm:w-auto px-8 py-3 border border-forest text-forest hover:bg-forest/5 rounded-full font-bold text-xs transition hover:-translate-y-0.5 active:translate-y-0 no-underline">
+                            Daftar Akun Baru
+                        </a>
+                    @endguest
+                </div>
+            </div>
+        </section>
     </div>
-  </main>
-
-  <!-- custom js link -->
-  <script src="{{ asset('linkskuy') }}/assets/js/script.js"></script>
-  @include('sweetalert::alert')
-
-  <!-- ionicon link -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
-</html>
+</main>
+@endsection

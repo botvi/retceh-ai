@@ -51,7 +51,7 @@ class RegisterController extends Controller
             ]);
 
             Auth::login($user);
-            Alert::success('Pendaftaran berhasil!', 'Selamat datang di Linkskuy!');
+            Alert::success('Pendaftaran berhasil!', 'Selamat datang di retcheStudio!');
             return redirect()->route('index');
             
         } catch (\Exception $e) {

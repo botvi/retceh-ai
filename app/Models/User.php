@@ -26,6 +26,7 @@ class User extends Authenticatable
         'role',
         'google_id',
         'foto_profile',
+        'credits',
     ];
 
     /**
@@ -47,4 +48,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function generations()
+    {
+        return $this->hasMany(AiGeneration::class);
+    }
 }
+
