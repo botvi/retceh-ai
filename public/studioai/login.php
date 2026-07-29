@@ -11,7 +11,7 @@
                     <i class="bi bi-shield-lock-fill"></i> LOG MASUK
                 </div>
                 <h2 class="text-xl font-bold tracking-tight text-forest mt-1.5 lowercase">masuk.</h2>
-                <p class="text-xs text-zinc-550 leading-relaxed">Masuk ke akun retcehStudio Anda untuk melanjutkan.</p>
+                <p class="text-xs text-zinc-550 leading-relaxed">Masuk ke akun retcehstudio Anda untuk melanjutkan.</p>
             </div>
 
             <!-- Login form wrapper -->

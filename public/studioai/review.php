@@ -13,7 +13,7 @@
                     <i class="bi bi-chat-heart-fill text-red-500"></i> TIM TIMBAL BALIK
                 </div>
                 <h2 class="text-xl font-bold tracking-tight text-forest mt-1.5 lowercase">ulasan.</h2>
-                <p class="text-xs text-zinc-550 leading-relaxed">Bagikan pengalaman Anda menggunakan retcehStudio dengan pengguna lain secara instan.</p>
+                <p class="text-xs text-zinc-550 leading-relaxed">Bagikan pengalaman Anda menggunakan retcehstudio dengan pengguna lain secara instan.</p>
             </div>
 
             <form id="form-review" class="space-y-5">

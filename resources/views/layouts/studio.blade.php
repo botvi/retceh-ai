@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'retcehStudio - AI Product Design Studio')</title>
+    <title>@yield('title', 'retcehstudio - AI Product Design Studio')</title>
     <meta name="description"
         content="Ubah foto produk Anda menjadi foto iklan premium secara instan dengan kecerdasan AI.">
 
@@ -393,7 +393,7 @@
                 <!-- Brand Logo -->
                 <a href="{{ route('index') }}" id="nav-logo"
                     class="flex items-center cursor-pointer font-bold text-zinc-900 no-underline">
-                    <span class="tracking-tighter text-lg font-black text-forest lowercase">retche</span>
+                    <span class="tracking-tighter text-lg font-black text-forest lowercase">retceh</span>
                     <span
                         class="relative inline-block text-wise-green bg-forest px-1.5 py-0.5 rounded-lg tracking-tighter text-lg font-black lowercase overflow-hidden text-left align-middle whitespace-nowrap">
                         <!-- Spacer to automatically and responsively set container width/height matching the longest word -->
@@ -429,8 +429,8 @@
                     <div class="items-center gap-3 hidden md:flex">
                         <a href="{{ route('topup.index') }}"
                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition no-underline">
-                            <i class="bi bi-cup-hot-fill text-amber-700"></i>
-                            <span>{{ Auth::user()->credits }}</span> Gelas Kopi
+                            <i class="bi bi-fire text-orange-600"></i>
+                            <span>{{ Auth::user()->credits }}</span> Ignis Token
                         </a>
                         <a href="{{ route('profil') }}"
                             class="flex items-center gap-2 text-zinc-700 hover:text-zinc-900 no-underline"
@@ -511,7 +511,7 @@
                             </a>
                             <a href="{{ route('topup.index') }}"
                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition no-underline">
-                                <i class="bi bi-cup-hot-fill text-amber-700"></i>
+                                <i class="bi bi-fire text-orange-600"></i>
                                 <span>{{ Auth::user()->credits }}</span>
                             </a>
                         </div>

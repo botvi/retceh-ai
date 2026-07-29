@@ -18,7 +18,7 @@ class PackagesSeeder extends Seeder
                 'price' => 15000,
                 'credits' => 50,
                 'features' => [
-                    '50 Gelas Kopi',
+                    '50 Ignis Token',
                     'Prioritas pembuatan standar',
                     'Akses seluruh ukuran studio'
                 ],
@@ -29,7 +29,7 @@ class PackagesSeeder extends Seeder
                 'price' => 45000,
                 'credits' => 200,
                 'features' => [
-                    '200 Gelas Kopi',
+                    '200 Ignis Token',
                     'Prioritas pembuatan tinggi',
                     'Akses seluruh ukuran studio',
                     'Lisensi penggunaan komersial'
@@ -41,7 +41,7 @@ class PackagesSeeder extends Seeder
                 'price' => 99000,
                 'credits' => 1000,
                 'features' => [
-                    '1000 Gelas Kopi',
+                    '1000 Ignis Token',
                     'Prioritas pembuatan prioritas utama',
                     'Akses seluruh ukuran studio',
                     'Lisensi komersial & tanpa watermark'

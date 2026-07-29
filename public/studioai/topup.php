@@ -8,12 +8,12 @@
         <div class="text-center max-w-md mx-auto space-y-2">
             <div
                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green/10 text-forest text-[11px] font-bold shadow-sm border border-wise-green/20">
-                <i class="bi bi-cup-hot-fill text-amber-700 animate-pulse"></i> BELI KOPI
+                <i class="bi bi-fire text-orange-600 animate-pulse"></i> BELI IGNIS TOKEN
             </div>
-            <h2 class="text-2xl font-black tracking-tight text-forest lowercase">beli kopi.</h2>
+            <h2 class="text-2xl font-black tracking-tight text-forest lowercase">beli token.</h2>
             <p class="text-xs text-zinc-550 leading-relaxed">
-                Top up gelas kopi untuk merender foto iklan produk berkualitas komersial secara instan. Setiap rendering
-                memotong 8 gelas kopi.
+                Top up Ignis Token untuk merender foto iklan produk berkualitas komersial secara instan. Setiap rendering
+                memotong 8 Ignis Token.
             </p>
         </div>
 
@@ -33,10 +33,10 @@
                     </div>
                     <div class="border-t border-zinc-100 pt-4 space-y-3">
                         <div class="flex items-center gap-2 text-xs text-zinc-800">
-                            <div class="w-4 h-4 rounded-full bg-amber-500/10 flex items-center justify-center">
-                                <i class="bi bi-cup-hot-fill text-amber-700 text-[10px]"></i>
+                            <div class="w-4 h-4 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                <i class="bi bi-fire text-orange-600 text-[10px]"></i>
                             </div>
-                            <span class="font-bold">50 Gelas Kopi</span>
+                            <span class="font-bold">50 Ignis Token</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-zinc-500">
                             <i class="bi bi-check-circle-fill text-emerald-600 text-xs"></i>
@@ -72,10 +72,10 @@
                     </div>
                     <div class="border-t border-zinc-100 pt-4 space-y-3">
                         <div class="flex items-center gap-2 text-xs text-zinc-800">
-                            <div class="w-4 h-4 rounded-full bg-amber-500/10 flex items-center justify-center">
-                                <i class="bi bi-cup-hot-fill text-amber-700 text-[10px]"></i>
+                            <div class="w-4 h-4 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                <i class="bi bi-fire text-orange-600 text-[10px]"></i>
                             </div>
-                            <span class="font-bold">200 Gelas Kopi</span>
+                            <span class="font-bold">200 Ignis Token</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-zinc-500">
                             <i class="bi bi-check-circle-fill text-emerald-600 text-xs"></i>
@@ -111,10 +111,10 @@
                     </div>
                     <div class="border-t border-zinc-100 pt-4 space-y-3">
                         <div class="flex items-center gap-2 text-xs text-zinc-800">
-                            <div class="w-4 h-4 rounded-full bg-amber-500/10 flex items-center justify-center">
-                                <i class="bi bi-cup-hot-fill text-amber-700 text-[10px]"></i>
+                            <div class="w-4 h-4 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                <i class="bi bi-fire text-orange-600 text-[10px]"></i>
                             </div>
-                            <span class="font-bold">1000 Gelas Kopi</span>
+                            <span class="font-bold">1000 Ignis Token</span>
                         </div>
                         <div class="flex items-center gap-2 text-xs text-zinc-500">
                             <i class="bi bi-check-circle-fill text-emerald-600 text-xs"></i>
@@ -142,7 +142,7 @@
             <div class="text-center space-y-1.5">
                 <h3 class="text-xl font-extrabold text-forest uppercase tracking-tight text-center">Pertanyaan Umum
                     (FAQ)</h3>
-                <p class="text-xs text-zinc-500">Semua yang perlu Anda ketahui tentang sistem gelas kopi retcehStudio.
+                <p class="text-xs text-zinc-500">Semua yang perlu Anda ketahui tentang sistem Ignis Token retcehstudio.
                 </p>
             </div>
 
@@ -153,14 +153,14 @@
                     open>
                     <summary
                         class="flex items-center justify-between gap-1.5 text-xs font-bold text-forest uppercase tracking-wider">
-                        <span>Apa itu gelas kopi retcehStudio?</span>
+                        <span>Apa itu Ignis Token retcehstudio?</span>
                         <span class="transition duration-300 group-open:-rotate-180">
                             <i class="bi bi-chevron-down"></i>
                         </span>
                     </summary>
                     <p class="mt-3 text-xs text-zinc-550 leading-relaxed">
-                        Gelas kopi adalah alat tukar di dalam studio untuk memanggil mesin kecerdasan buatan (AI) kami.
-                        Setiap kali Anda menekan tombol **Generate**, sistem akan memotong sebanyak **8 gelas kopi**
+                        Ignis Token adalah alat tukar di dalam studio untuk memanggil mesin kecerdasan buatan (AI) kami.
+                        Setiap kali Anda menekan tombol **Generate**, sistem akan memotong sebanyak **8 Ignis Token**
                         untuk merender latar belakang studio dan menyelaraskan pencahayaan foto produk Anda.
                     </p>
                 </details>
@@ -170,13 +170,13 @@
                     class="group rounded-2xl border border-zinc-200 bg-white p-4.5 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary
                         class="flex items-center justify-between gap-1.5 text-xs font-bold text-forest uppercase tracking-wider">
-                        <span>Apakah gelas kopi saya memiliki masa kedaluwarsa?</span>
+                        <span>Apakah Ignis Token saya memiliki masa kedaluwarsa?</span>
                         <span class="transition duration-300 group-open:-rotate-180">
                             <i class="bi bi-chevron-down"></i>
                         </span>
                     </summary>
                     <p class="mt-3 text-xs text-zinc-550 leading-relaxed">
-                        Tidak ada masa kedaluwarsa. Gelas kopi yang Anda beli atau dapatkan secara cuma-cuma saat
+                        Tidak ada masa kedaluwarsa. Ignis Token yang Anda beli atau dapatkan secara cuma-cuma saat
                         mendaftar akan tetap tersimpan aman di akun Anda dan dapat digunakan kapan saja.
                     </p>
                 </details>
@@ -193,7 +193,7 @@
                     </summary>
                     <p class="mt-3 text-xs text-zinc-550 leading-relaxed">
                         Dalam versi demo/desain saat ini, proses pembayaran dilakukan menggunakan simulasi pembayaran
-                        instan. Cukup klik tombol **Beli Paket**, dan saldo gelas kopi Anda akan otomatis bertambah
+                        instan. Cukup klik tombol **Beli Paket**, dan saldo Ignis Token Anda akan otomatis bertambah
                         secara langsung untuk memudahkan pengujian visual.
                     </p>
                 </details>

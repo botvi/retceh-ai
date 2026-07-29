@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Product Design Studio - Powered by retcehStudio AI</title>
+    <title>AI Product Design Studio - Powered by retcehstudio</title>
     <meta name="description"
         content="Ubah foto produk Anda menjadi foto iklan premium secara instan dengan kecerdasan AI.">
     <!-- Google Fonts: Inter, Outfit, Plus Jakarta Sans & Syne -->
@@ -494,8 +494,8 @@
                 <div class="items-center gap-3 hidden desktop-profile-badge">
                     <a href="topup.php"
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition">
-                        <i class="bi bi-cup-hot-fill text-amber-700"></i>
-                        <span class="desktop-credit-count">15</span> Gelas Kopi
+                        <i class="bi bi-fire text-orange-600"></i>
+                        <span class="desktop-credit-count">15</span> Ignis Token
                     </a>
                     <a href="profile.php" class="flex items-center gap-2 text-zinc-700 hover:text-zinc-900 no-underline"
                         title="Profil Anda">
@@ -555,8 +555,8 @@
 
                     <a href="topup.php"
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition">
-                        <i class="bi bi-cup-hot-fill text-amber-700"></i>
-                        <span class="mobile-credit-count">15</span> Gelas Kopi
+                        <i class="bi bi-fire text-orange-600"></i>
+                        <span class="mobile-credit-count">15</span> Ignis Token
                     </a>
                 </div>
                 <button type="button"

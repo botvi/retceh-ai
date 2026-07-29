@@ -507,22 +507,3 @@
         }
     })();
 </script>
-
-/* Mobile: toast full width on small screens */
-@media (max-width: 480px) {
-#custom-toast-container {
-top: 75px !important;
-right: 12px !important;
-left: 12px !important;
-max-width: 100% !important;
-width: calc(100% - 24px) !important;
-}
-.custom-toast-card {
-padding: 12px 14px !important;
-border-radius: 14px !important;
-}
-.custom-modal-card {
-margin: 0 12px !important;
-padding: 20px !important;
-}
-}

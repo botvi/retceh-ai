@@ -2,7 +2,7 @@
     <div class="navbar-wrapper">
         <div class="m-header d-flex align-items-center justify-content-center">
             <a href="/dashboard-superadmin" class="b-brand text-center">
-                <span class="h5 m-0 fw-700">retcehStudio</span>
+                <span class="h5 m-0 fw-700">retcehstudio</span>
             </a>
         </div>
         @if (Auth::user()->role == 'superadmin')
@@ -16,7 +16,7 @@
                     </li>
 
                     <li class="pc-item pc-caption">
-                        <label>Data retcehStudio</label>
+                        <label>Data retcehstudio</label>
                     </li>
 
                     <li class="pc-item {{ request()->is('manage-settings*') ? 'active' : '' }}">

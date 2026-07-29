@@ -62,7 +62,7 @@
                     class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
                     <i class="bi bi-sparkles"></i> Galeri Sebelum & Sesudah AI
                 </div>
-                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Kekuatan AI retcehStudio</h3>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Kekuatan AI retcehstudio</h3>
                 <p class="text-xs text-zinc-400">Klik kartu untuk menukar posisi Foto Asli & Hasil AI</p>
 
             </div>
@@ -233,7 +233,7 @@
                     class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
                     <i class="bi bi-rocket-takeoff-fill"></i> CEPAT & MUDAH
                 </div>
-                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Cara Kerja retcehStudio</h3>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Cara Kerja retcehstudio</h3>
                 <p class="text-xs sm:text-sm text-zinc-500 max-w-lg mx-auto">
                     Hanya butuh 3 langkah sederhana untuk menciptakan foto iklan kemasan produk bernilai komersial
                     tinggi.
@@ -288,7 +288,7 @@
                         3
                     </div>
                     <div class="space-y-2">
-                        <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Gunakan 8 Gelas Kopi</h4>
+                        <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Gunakan 8 Ignis Token</h4>
                         <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed">
                             Klik Generate. AI akan merancang latar belakang dan efek pencahayaan profesional dalam
                             hitungan detik.
@@ -305,7 +305,7 @@
                     class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green text-forest text-[11px] font-bold shadow-sm">
                     <i class="bi bi-shield-check"></i> KEUNGGULAN UTAMA
                 </div>
-                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Mengapa Memilih retcehStudio?</h3>
+                <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Mengapa Memilih retcehstudio?</h3>
                 <p class="text-xs sm:text-sm text-zinc-500 max-w-lg mx-auto">
                     Platform desain bertenaga AI yang dirancang khusus untuk meningkatkan konversi penjualan produk
                     Anda.
@@ -360,7 +360,7 @@
                         <i class="bi bi-heart-fill text-red-500"></i> TESTIMONI
                     </div>
                     <h3 class="text-2xl font-extrabold text-zinc-900 tracking-tight">Ulasan Pelanggan</h3>
-                    <p class="text-xs text-zinc-500">Apa kata pelaku bisnis dan kreator yang menggunakan retcehStudio.
+                    <p class="text-xs text-zinc-500">Apa kata pelaku bisnis dan kreator yang menggunakan retcehstudio.
                     </p>
                 </div>
                 <a href="review.php"
@@ -388,7 +388,7 @@
                     style="color: var(--color-forest) !important;">retcehstudio.</h3>
                 <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-forest) !important;">
                     Siap mengubah foto produk biasa Anda menjadi aset visual premium dengan cepat? Gabung sekarang dan
-                    dapatkan 15 gelas kopi gratis untuk memulai.
+                    dapatkan 15 Ignis Token gratis untuk memulai.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                     <a href="studio.php"

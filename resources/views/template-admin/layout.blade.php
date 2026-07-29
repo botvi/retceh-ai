@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | retcehStudio</title>
+    <title>Dashboard | retcehstudio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="retcehStudio Admin Dashboard.">
+    <meta name="description" content="retcehstudio Admin Dashboard.">
     <meta name="author" content="CodedThemes">
 
     <link rel="icon" href="{{ asset('env') }}/logo.jpg" type="image/x-icon">
@@ -764,7 +764,7 @@
         <div class="footer-wrapper container-fluid">
             <div class="row">
                 <div class="col-sm my-1">
-                    <p class="m-0">retcehStudio <i class="ti ti-heart-filled text-danger ms-1"></i></p>
+                    <p class="m-0">retcehstudio <i class="ti ti-heart-filled text-danger ms-1"></i></p>
                 </div>
                 <div class="col-auto my-1">
                     <ul class="list-inline footer-link mb-0">

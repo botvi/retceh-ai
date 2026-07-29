@@ -42,7 +42,7 @@ class LoginController extends Controller
                 Alert::success('Login Berhasil!', 'Welcome back, Superadmin! Selamat datang kembali.');
                 return redirect()->route('dashboard-superadmin');
             } else if ($user->role == 'user') {
-                Alert::success('Login Berhasil!', 'Halo bro, selamat datang lagi di retcheStudio!');
+                Alert::success('Login Berhasil!', 'Halo bro, selamat datang lagi di retcehstudio!');
                 return redirect()->route('index');
             } else {
                 Auth::logout();

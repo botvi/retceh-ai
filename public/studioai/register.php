@@ -11,7 +11,7 @@
                     <i class="bi bi-person-plus-fill"></i> DAFTAR BARU
                 </div>
                 <h2 class="text-xl font-bold tracking-tight text-forest mt-1.5 lowercase">daftar.</h2>
-                <p class="text-xs text-zinc-550 leading-relaxed">Buat akun retcehStudio baru Anda untuk mulai mendesain.</p>
+                <p class="text-xs text-zinc-550 leading-relaxed">Buat akun retcehstudio baru Anda untuk mulai mendesain.</p>
             </div>
 
             <!-- Register form wrapper -->

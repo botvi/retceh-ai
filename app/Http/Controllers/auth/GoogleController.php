@@ -49,7 +49,7 @@ class GoogleController extends Controller
                     Alert::success('Login Berhasil!', 'Welcome back, Superadmin! Selamat datang kembali.');
                     return redirect()->route('dashboard-superadmin');
                 } else {
-                    Alert::success('Login Berhasil!', 'Halo bro, selamat datang lagi di retcheStudio!');
+                    Alert::success('Login Berhasil!', 'Halo bro, selamat datang lagi di retcehstudio!');
                     return redirect()->route('index');
                 }
             }

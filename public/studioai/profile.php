@@ -38,7 +38,7 @@
                 
                 <div class="text-center mt-3">
                     <h3 class="text-lg font-extrabold text-forest username-display">User</h3>
-                    <p class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Pengguna RetcehStudio</p>
+                    <p class="text-[10px] uppercase font-bold tracking-widest text-zinc-400">Pengguna retcehstudio</p>
                 </div>
             </div>
 
@@ -75,13 +75,13 @@
                 <!-- Session Credit Indicator Card (Stunning design) -->
                 <div class="p-4 rounded-2xl border border-wise-green bg-wise-green/5 flex items-center justify-between shadow-sm">
                     <div class="space-y-0.5">
-                        <span class="text-[9px] text-zinc-550 font-bold uppercase tracking-wider block">Sisa Saldo Gelas Kopi</span>
+                        <span class="text-[9px] text-zinc-550 font-bold uppercase tracking-wider block">Sisa Saldo Ignis Token</span>
                         <div class="flex items-center gap-1">
                             <div class="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center">
-                                <i class="bi bi-cup-hot-fill text-amber-700 text-xs"></i>
+                                <i class="bi bi-fire text-orange-600 text-xs"></i>
                             </div>
                             <span class="text-base font-extrabold text-forest" id="profile-credits-count">15</span>
-                            <span class="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">Gelas Kopi</span>
+                            <span class="text-[10px] text-zinc-500 font-semibold uppercase tracking-wider">Ignis Token</span>
                         </div>
                     </div>
                     <a href="topup.php" class="inline-flex py-2 px-4 bg-forest hover:bg-forest-hover text-wise-green rounded-full font-bold text-[10px] uppercase tracking-wider transition hover:scale-105 active:scale-95 no-underline shadow">

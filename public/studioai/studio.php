@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200/60 pb-5">
             <div class="space-y-1">
                 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-wise-green/10 text-forest text-[11px] font-bold shadow-sm border border-wise-green/20">
-                    <i class="bi bi-sparkles"></i> RETCEHSTUDIO AI
+                    <i class="bi bi-fire"></i> RETCEHSTUDIO
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-forest mt-1.5 lowercase">
                     studio.
@@ -83,7 +83,7 @@
                     <!-- Energetic Generate Button -->
                     <div class="pt-2">
                         <button type="button" id="generate-btn" class="w-full py-3 px-6 rounded-full font-extrabold text-xs uppercase tracking-wider text-white bg-zinc-900 hover:bg-zinc-800 active:scale-[0.98] transition-all duration-200 disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer shadow-md" disabled>
-                            <i class="bi bi-magic"></i> Generate Desain (8 Gelas Kopi)
+                            <i class="bi bi-fire"></i> Generate Desain (8 Ignis Token)
                         </button>
                     </div>
                 </div>

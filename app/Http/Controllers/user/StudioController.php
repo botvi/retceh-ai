@@ -194,7 +194,7 @@ class StudioController extends Controller
         if ($user->credits < $requiredCredits) {
             return response()->json([
                 'success' => false,
-                'error' => 'Saldo gelas kopi tidak mencukupi'
+                'error' => 'Saldo Ignis Token tidak mencukupi'
             ], 400);
         }
 

@@ -59,7 +59,7 @@
                                             placeholder="Contoh: 15000" value="{{ old('price') }}" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label class="form-label">Jumlah Kredit (Gelas Kopi)</label>
+                                        <label class="form-label">Jumlah Kredit (Ignis Token)</label>
                                         <input type="number" name="credits" class="form-control" placeholder="Contoh: 50"
                                             value="{{ old('credits') }}" required>
                                     </div>
@@ -68,7 +68,7 @@
                                         <label class="form-label">Fitur Paket</label>
                                         <small class="text-muted d-block mb-2">Satu fitur per baris</small>
                                         <textarea name="features_raw" class="form-control" rows="6"
-                                            placeholder="50 Gelas Kopi&#10;Prioritas pembuatan standar&#10;Akses seluruh ukuran studio" required>{{ old('features_raw') }}</textarea>
+                                            placeholder="50 Ignis Token&#10;Prioritas pembuatan standar&#10;Akses seluruh ukuran studio" required>{{ old('features_raw') }}</textarea>
                                     </div>
 
                                     <div class="col-md-12 mb-3">
