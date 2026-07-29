@@ -153,7 +153,7 @@
                             <button type="button" id="generate-btn"
                                 class="w-full py-3.5 px-6 rounded-full font-black text-xs uppercase tracking-wider text-forest bg-wise-green hover:bg-wise-green-hover active:scale-[0.98] transition-all duration-200 disabled:opacity-40 disabled:pointer-events-none flex items-center justify-center gap-2 cursor-pointer shadow-md"
                                 disabled>
-                                <i class="bi bi-fire"></i> Generate Desain (8 Ignis Token)
+                                <i class="bi bi-fire"></i> Generate Desain (8 Neurium)
                             </button>
 
                             @guest
@@ -409,7 +409,7 @@
                     chip.addEventListener('click', () => {
                         // Toggle: if already active & value matches, clear
                         if (optionalNoteInput.value === label && chip.classList.contains(
-                            'active')) {
+                                'active')) {
                             optionalNoteInput.value = '';
                             chip.classList.remove('active');
                             clearCategoryBtn.classList.add('hidden');
@@ -617,7 +617,7 @@
                     editContainer.classList.add('hidden');
                     document.getElementById('edit-instruction').value = '';
                 }
-                generateBtn.innerHTML = '<i class="bi bi-fire"></i> Generate Desain (8 Ignis Token)';
+                generateBtn.innerHTML = '<i class="bi bi-fire"></i> Generate Desain (8 Neurium)';
             }
 
             // Handle Generation Click
@@ -642,7 +642,7 @@
                 const requiredCredits = isEditMode ? 6 : 8;
                 if (credits < requiredCredits) {
                     showToast(
-                        `Ignis Token Anda tidak mencukupi (memerlukan ${requiredCredits} Ignis Token).`,
+                        `Neurium Anda tidak mencukupi (memerlukan ${requiredCredits} Neurium).`,
                         'error');
                     setTimeout(() => {
                         window.location.href = '{{ route('topup.index') }}';
@@ -803,7 +803,7 @@
             btnEdit.addEventListener('click', () => {
                 isEditMode = true;
                 document.getElementById('edit-instruction-container').classList.remove('hidden');
-                generateBtn.innerHTML = '<i class="bi bi-fire"></i> Edit Desain (6 Ignis Token)';
+                generateBtn.innerHTML = '<i class="bi bi-fire"></i> Edit Desain (6 Neurium)';
                 document.getElementById('product-upload-card').scrollIntoView({
                     behavior: 'smooth'
                 });

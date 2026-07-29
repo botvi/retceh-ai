@@ -183,7 +183,7 @@
                             class="w-12 h-12 rounded-full bg-wise-green text-forest flex items-center justify-center mx-auto text-base font-extrabold shadow-md ring-4 ring-zinc-50 group-hover:scale-110 transition-transform duration-300">
                             3</div>
                         <div class="space-y-2">
-                            <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Gunakan Ignis Token</h4>
+                            <h4 class="text-xs font-black uppercase tracking-wider text-zinc-700">Gunakan Neurium</h4>
                             <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed">
                                 Klik Generate. AI akan merancang latar belakang dan efek pencahayaan profesional dalam
                                 hitungan detik.
@@ -312,7 +312,7 @@
                         style="color: var(--color-forest) !important;">retcehstudio.</h3>
                     <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--color-forest) !important;">
                         Siap mengubah foto produk biasa Anda menjadi aset visual premium dengan cepat? Gabung sekarang dan
-                        dapatkan 50 Ignis Token gratis untuk memulai.
+                        dapatkan 20 Neurium gratis untuk memulai.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                         <a href="{{ route('studio.index') }}"

@@ -59,7 +59,7 @@
                                             value="{{ old('price', $package->price) }}" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label class="form-label">Jumlah Kredit (Ignis Token)</label>
+                                        <label class="form-label">Jumlah Kredit (Neurium)</label>
                                         <input type="number" name="credits" class="form-control"
                                             value="{{ old('credits', $package->credits) }}" required>
                                     </div>

@@ -131,7 +131,7 @@
                             class="p-4 rounded-2xl border border-wise-green bg-wise-green/5 flex items-center justify-between shadow-sm">
                             <div class="space-y-0.5">
                                 <span class="text-[9px] text-zinc-550 font-bold uppercase tracking-wider block">Sisa Saldo
-                                    Ignis Token</span>
+                                    Neurium</span>
                                 <div class="flex items-center gap-1">
                                     <div class="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center">
                                         <i class="bi bi-fire text-orange-600 text-xs"></i>

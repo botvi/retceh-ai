@@ -341,7 +341,7 @@
                                             {{ $trx->package->name ?? '—' }}
                                             @if ($trx->package)
                                                 <div class="text-muted" style="font-size:0.72rem; font-weight:400;">
-                                                    {{ $trx->package->credits }} Ignis Token
+                                                    {{ $trx->package->credits }} Neurium
                                                 </div>
                                             @endif
                                         </td>

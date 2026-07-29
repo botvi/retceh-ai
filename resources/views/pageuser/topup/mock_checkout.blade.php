@@ -28,7 +28,7 @@
                         <span class="text-xs text-zinc-500 font-medium">Jumlah Kredit</span>
                         <span class="text-xs font-extrabold text-forest flex items-center gap-1">
                             <i class="bi bi-fire text-orange-600 text-xs"></i>
-                            {{ $package->credits }} Ignis Token
+                            {{ $package->credits }} Neurium
                         </span>
                     </div>
                     <div class="flex items-center justify-between pt-1">

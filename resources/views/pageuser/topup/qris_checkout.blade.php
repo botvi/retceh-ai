@@ -107,7 +107,7 @@
                         <span class="text-[11px] text-zinc-500 font-medium">Kredit Didapat</span>
                         <span class="text-[11px] font-extrabold text-forest flex items-center gap-1">
                             <i class="bi bi-fire text-orange-600 text-xs"></i>
-                            {{ $package->credits }} Ignis Token
+                            {{ $package->credits }} Neurium
                         </span>
                     </div>
                     <div class="flex items-center justify-between border-b border-zinc-100 pb-2">
@@ -151,7 +151,7 @@
                 <div class="px-5 pb-5 hidden" id="success-actions">
                     <a href="{{ route('studio.index') }}"
                         class="w-full py-3 px-5 bg-wise-green text-forest hover:bg-wise-green-hover rounded-full font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:-translate-y-0.5 flex items-center justify-center gap-2 no-underline">
-                        <i class="bi bi-fire"></i> Mulai Gunakan Ignis Token
+                        <i class="bi bi-fire"></i> Mulai Gunakan Neurium
                     </a>
                 </div>
 
@@ -303,7 +303,7 @@
                     'flex items-center gap-1.5 px-4 py-2 rounded-2xl text-xs font-bold border bg-emerald-50 border-emerald-200 text-emerald-600';
                 statusText.textContent = 'Pembayaran Berhasil!';
 
-                showToast('Pembayaran berhasil! Ignis Token telah ditambahkan.', 'success');
+                showToast('Pembayaran berhasil! Neurium telah ditambahkan.', 'success');
             }
 
             // ========================

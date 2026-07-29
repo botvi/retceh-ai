@@ -63,7 +63,7 @@ class TopupController extends Controller
                 'order_id'     => $orderId,
                 'id_merchant'  => $merchantId,
                 'amount'       => $package->price,
-                'keterangan'   => 'Pembelian ' . $package->credits . ' Ignis Token - ' . $package->name,
+                'keterangan'   => 'Pembelian ' . $package->credits . ' Neurium - ' . $package->name,
                 'callback_url' => $webhookUrl,
             ]);
 
@@ -130,7 +130,7 @@ class TopupController extends Controller
         $user->credits += $package->credits;
         User::where('id', $user->id)->update(['credits' => $user->credits]);
 
-        Alert::success('Pembelian Berhasil!', "Selamat, saldo akun Anda berhasil ditambahkan {$package->credits} Ignis Token.");
+        Alert::success('Pembelian Berhasil!', "Selamat, saldo akun Anda berhasil ditambahkan {$package->credits} Neurium.");
         return redirect()->route('studio.index');
     }
 

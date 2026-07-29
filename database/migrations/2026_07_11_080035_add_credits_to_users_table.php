@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('credits')->default(50)->after('password');
+            $table->integer('credits')->default(20)->after('password');
         });
     }
 

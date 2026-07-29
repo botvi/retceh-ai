@@ -38,7 +38,7 @@ class ManagePelangganController extends Controller
             'credits' => $request->credits
         ]);
 
-        Alert::success('Berhasil', 'Saldo Ignis Token pelanggan berhasil diperbarui!');
+        Alert::success('Berhasil', 'Saldo Neurium pelanggan berhasil diperbarui!');
         return redirect()->route('manage-pelanggan.index');
     }
 
