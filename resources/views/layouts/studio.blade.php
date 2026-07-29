@@ -429,7 +429,7 @@
                     <div class="items-center gap-3 hidden md:flex">
                         <a href="{{ route('topup.index') }}"
                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition no-underline">
-                            <i class="bi bi-gem text-blue-600"></i>
+                            <i class="bi bi-fire text-blue-600"></i>
                             <span>{{ Auth::user()->credits }}</span> Neurium
                         </a>
                         <a href="{{ route('profil') }}"
@@ -511,7 +511,7 @@
                             </a>
                             <a href="{{ route('topup.index') }}"
                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 transition no-underline">
-                                <i class="bi bi-gem text-blue-600"></i>
+                                <i class="bi bi-fire text-blue-600"></i>
                                 <span>{{ Auth::user()->credits }}</span>
                             </a>
                         </div>

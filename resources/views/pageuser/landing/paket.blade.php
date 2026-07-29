@@ -12,7 +12,7 @@
         <div class="text-center max-w-xl mx-auto space-y-3">
             <div
                 class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-wise-green/10 text-forest text-xs font-extrabold shadow-xs border border-wise-green/30 tracking-wider uppercase">
-                <i class="bi bi-gem text-blue-600 animate-pulse"></i> Paket Neurium
+                <i class="bi bi-fire text-blue-600 animate-pulse"></i> Paket Neurium
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-forest lowercase">
                 pilih paket.
@@ -62,7 +62,7 @@
                             class="flex items-center gap-2.5 text-xs text-zinc-800 font-bold bg-amber-50/80 border border-amber-200/60 p-2.5 rounded-xl">
                             <div
                                 class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="bi bi-gem text-blue-600 text-xs"></i>
+                                <i class="bi bi-fire text-blue-600 text-xs"></i>
                             </div>
                             <span class="text-sm font-black text-forest">{{ $pkg->credits }} Neurium</span>
                         </div>

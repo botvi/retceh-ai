@@ -187,26 +187,51 @@
                             </div>
                         </div>
 
-                        <!-- Loading Progress State -->
+                        <!-- Loading Progress State with stunning blue effects -->
                         <div class="hidden flex flex-col items-center justify-center gap-6 w-full max-w-xs"
                             id="viewport-loading">
-                            <div class="relative w-24 h-24 flex items-center justify-center">
-                                <div
-                                    class="w-20 h-20 border-4 border-zinc-100 border-t-wise-green rounded-full animate-spin">
+                            <!-- Epic Blue Spinner with glow rings -->
+                            <div class="relative w-28 h-28 flex items-center justify-center">
+                                <!-- Outer glow ring -->
+                                <div class="absolute w-28 h-28 rounded-full bg-blue-500/20 animate-ping-slow"></div>
+                                <!-- Middle ring -->
+                                <div class="absolute w-24 h-24 border-[3px] border-blue-200/30 rounded-full"></div>
+                                <!-- Main spinning ring -->
+                                <div class="absolute w-24 h-24 border-[4px] border-blue-100/20 border-t-blue-600 border-r-blue-500 rounded-full animate-spin"></div>
+                                <!-- Inner spinning ring (reverse) -->
+                                <div class="absolute w-16 h-16 border-[3px] border-transparent border-b-blue-400 border-l-blue-500 rounded-full animate-spin-slower"></div>
+                                <!-- Center icon + percentage -->
+                                <div class="absolute flex flex-col items-center justify-center">
+                                    <i class="bi bi-cloud-arrow-up-fill text-blue-600 text-lg mb-0.5 animate-bounce-gentle"></i>
+                                    <span class="text-base font-black text-blue-700 spinner-text">0%</span>
                                 </div>
-                                <span class="absolute text-sm font-black text-forest spinner-text">0%</span>
                             </div>
 
                             <div class="text-center space-y-1.5 w-full">
-                                <h3 id="status-heading" class="text-xs font-black text-forest uppercase tracking-wider">
+                                <h3 id="status-heading"
+                                    class="text-xs font-black text-blue-800 uppercase tracking-wider">
                                     Mengirimkan Tugas...</h3>
                                 <p id="status-desc"
-                                    class="text-[10px] text-zinc-450 leading-relaxed w-full break-words font-medium"></p>
+                                    class="text-[10px] text-blue-500/70 leading-relaxed w-full break-words font-medium"></p>
                             </div>
 
-                            <div class="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-wise-green rounded-full transition-all duration-300" id="status-bar"
-                                    style="width: 0%;"></div>
+                            <!-- Glowing progress bar -->
+                            <div class="w-full h-2.5 bg-blue-100/60 rounded-full overflow-hidden shadow-inner relative">
+                                <div class="h-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 rounded-full transition-all duration-300 relative shadow-lg shadow-blue-500/40"
+                                    id="status-bar" style="width: 0%;"></div>
+                                <!-- Shimmer overlay -->
+                                <div class="absolute inset-0 w-full h-full overflow-hidden rounded-full pointer-events-none">
+                                    <div class="absolute -top-1 -bottom-1 w-12 bg-white/30 rotate-12 -translate-x-full animate-shimmer"></div>
+                                </div>
+                            </div>
+
+                            <!-- Particle dots -->
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse delay-0"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse delay-150"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse delay-300"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse delay-500"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse delay-700"></span>
                             </div>
                         </div>
 
@@ -319,6 +344,84 @@
 
         .suggestion-chip:nth-child(8) {
             animation-delay: 0.35s;
+        }
+
+        /* ===== Blue Loading Effects ===== */
+
+        /* Slow ping for outer glow ring */
+        @keyframes ping-slow {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.6;
+            }
+        }
+        .animate-ping-slow {
+            animation: ping-slow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Slower reverse spin for the inner ring */
+        @keyframes spin-slower {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+        .animate-spin-slower {
+            animation: spin-slower 3s linear infinite;
+        }
+
+        /* Gentle bounce on the upload icon */
+        @keyframes bounce-gentle {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+        .animate-bounce-gentle {
+            animation: bounce-gentle 1.2s ease-in-out infinite;
+        }
+
+        /* Shimmer sweep across progress bar */
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(12deg);
+            }
+            100% {
+                transform: translateX(400%) rotate(12deg);
+            }
+        }
+        .animate-shimmer {
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        /* Particle dot delay variants */
+        .delay-0 {
+            animation-delay: 0s;
+        }
+        .delay-150 {
+            animation-delay: 0.15s;
+        }
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        .delay-700 {
+            animation-delay: 0.7s;
         }
     </style>
     <script>
